@@ -3,8 +3,8 @@ body {
 }
 
 .wrapper {
-  margin-top: 40%;
-  /* margin-bottom: 80px; */
+  margin-top: 80px;
+  margin-bottom: 80px;
 }
 
 .form-signin {
@@ -13,10 +13,12 @@ body {
   margin: 0 auto;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius:30px;
 }
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
   margin-bottom: 30px;
+  padding-top:15px;
 }
 .form-signin .checkbox {
   font-weight: normal;
