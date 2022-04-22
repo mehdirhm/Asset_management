@@ -1,5 +1,5 @@
 import logo from '../logo.svg';
-import './login.css';
+import './reg.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React, { Component } from 'react';
@@ -7,11 +7,12 @@ import axios from 'axios';
 
 
 
-class Login extends Component {
+class Reg extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      fullname: '',  
       username: '',
       password: '',
       
@@ -27,10 +28,11 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const { username , password } = this.state;
+    const { fullname ,username , password } = this.state;
 
-    const user = {
-      username,
+    const userReg = {
+      fullname,
+      username, 
       password
     };
     let axiosConfig = {
@@ -41,8 +43,8 @@ class Login extends Component {
       };
     axios({
       method:"post",
-      url:"http://localhost:3030/login",
-      data:user,
+      url:"http://localhost:3030/reguser",
+      data:userReg,
       
       
       
@@ -61,17 +63,18 @@ class Login extends Component {
     return (
       <div className="wrapper">
         <form onSubmit={this.handleSubmit} method="POST" action="http://localhost:3030/"  className="form-signin">
-          <h2 className="form-signin-heading">Please login</h2>
-          <input type="text" className="form-control" name="username" placeholder="Email Address" onChange={this.handleInputChange} required="" autoFocus=""/>
+          <h2 className="form-signin-heading">Please Register</h2>
+          <input type="text" className="form-control" name="fullname" placeholder="Full Name" onChange={this.handleInputChange} required="" autoFocus=""/>
+          <input type="text" className="form-control" name="username" placeholder="User Name" onChange={this.handleInputChange} required="" autoFocus=""/>
           <input type="password" className="form-control" name="password" placeholder="Password" onChange={this.handleInputChange} required="" />
-          <label className="form-control" id="remember" >
+          {/* <label className="form-control" id="remember" >
             <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe" /> Remember Me
-          </label>
-          <input type="submit" className="btn btn-lg btn-primary btn-block" value="Login" />
+          </label> */}
+          <input type="submit" className="btn btn-lg btn-danger btn-block" value="Register" />
         </form>
       </div>
     );
   }
 }
 
-export default Login;
+export default Reg;
