@@ -3,6 +3,7 @@
 import joi from 'joi';
 import mongoose from 'mongoose';
 
+//define DB collection schema
 const userSchema = new mongoose.Schema({
   fullname: {
     type: String,
@@ -23,11 +24,10 @@ const userSchema = new mongoose.Schema({
     minlength: 5,
     maxlength: 1024
   },
-  regdate: {
-      type: Date,
-
+  regdate:{ 
+    type: Date,
   },
-  isAdmin: Boolean
+  isAdmin: Boolean,
 });
 
 // userSchema.methods.generateAuthToken = function() { 
@@ -37,16 +37,15 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+//creat registration inputs validator
 function validateUser(user) {
-  const schema = {
+  const schema = joi.object({
     fullname: joi.string().min(5).max(50).required(),
     username: joi.string().min(5).max(255).required(),
     password: joi.string().min(5).max(255).required()
-  };
-
-  return joi.validate(user, schema);
+  });
+  return schema.validate(user);
 }
 
-const _User = User;
-export { _User as User };
+export  {User} ;
 export {validateUser as validate} 
