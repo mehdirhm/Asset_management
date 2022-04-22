@@ -3,6 +3,7 @@
 import joi from 'joi';
 import mongoose from 'mongoose';
 
+//define DB collection schema
 const userSchema = new mongoose.Schema({
   fullname: {
     type: String,
@@ -36,6 +37,7 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+//creat registration inputs validator
 function validateUser(user) {
   const schema = joi.object({
     fullname: joi.string().min(5).max(50).required(),
@@ -45,6 +47,5 @@ function validateUser(user) {
   return schema.validate(user);
 }
 
-const _User = User;
-export { _User as User };
+export  {User} ;
 export {validateUser as validate} 
