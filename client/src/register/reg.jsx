@@ -36,7 +36,7 @@ class Reg extends Component {
       username, 
       password,
       // isAdmin,
-      'x-auth-token' : localStorage.getItem('token')
+      
     };
     let axiosConfig = {
       headers: {
@@ -44,10 +44,15 @@ class Reg extends Component {
           "Access-Control-Allow-Origin": "*",
       },
       };
+
+      
     axios({
       method:"post",
       url:"http://localhost:3030/reguser",
       data:userReg,
+      headers : {
+        'x-auth-token' : localStorage.getItem('token')
+      }
       
       
       

@@ -50,7 +50,9 @@ class Login extends Component {
   })
   
       .then((res) => {
-        console.log(res);
+        // var myHeaders = new Headers();
+        // console.log(myHeaders.get('x-auth-token'));
+        console.log(res.data)
         localStorage.setItem('token',res.data)
       })
       .catch(err => {
