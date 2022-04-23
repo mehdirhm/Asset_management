@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import _ from 'lodash';
 import { User, validate } from '../models/user.js';
 import { Router } from 'express';
+import auth from '../middleware/adminAuth.js';
 const router = Router();
 
 // router.get('/me', auth, async (req, res) => {
@@ -11,7 +12,7 @@ const router = Router();
 // });
 
 //the post method of registering a new user
-router.post('/', async (req, res) => {
+router.post('/',auth ,async (req, res) => {
   const date = new Date();
 
   //validating the user inputs
@@ -27,6 +28,7 @@ router.post('/', async (req, res) => {
     fullname: req.body.fullname,
     username: req.body.username,
     password: req.body.password,
+    isAdmin: req.body.isAdmin,
     regdate: date.getFullYear() +'-'+ ("0" + (date.getMonth() + 1)).slice(-2)+'-'+ ("0" + date.getDate()).slice(-2)
   });
 
@@ -38,8 +40,7 @@ router.post('/', async (req, res) => {
   await user.save();
 
   //creat a token and sending it back to the client
-  const token = user.generateAuthToken();
-  res.header('x-auth-token', token).send(_.pick(user, ['_id', 'fullname', 'username']));
+  res.send('user created successfully');
 });
 
 export default router; 
