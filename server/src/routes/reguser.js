@@ -1,6 +1,4 @@
 // import auth from '../middleware/auth';
-// import jwt from 'jsonwebtoken';
-// import config from 'config';
 import bcrypt from 'bcrypt';
 import _ from 'lodash';
 import { User, validate } from '../models/user.js';
@@ -39,10 +37,9 @@ router.post('/', async (req, res) => {
   //saving the new user in DB
   await user.save();
 
-
-  res.send(user);
-//   const token = user.generateAuthToken();
-//   res.header('x-auth-token', token).send(_.pick(user, ['_id', 'name', 'email']));
+  //creat a token and sending it back to the client
+  const token = user.generateAuthToken();
+  res.header('x-auth-token', token).send(_.pick(user, ['_id', 'fullname', 'username']));
 });
 
 export default router; 
