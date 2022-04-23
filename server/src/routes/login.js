@@ -23,9 +23,15 @@ router.post('/', async (req, res) => {
   // var myHeaders = new Headers();
   const token = user.generateAuthToken();
   // myHeaders.append('x-auth-token',token);
-  res.header('x-auth-token', token);
+  // console.log(typeof(token));
+  // res.writeHead(200 , {
+  //   'x-auth-token':"token",
+  // }).send();
+  res.header("Access-Control-Expose-Headers", "*");   // for acces to content of header that set in other side of application
+  res.header("x-auth-token", token).send();
   
-  res.send(token);
+  // res.send();
+  // res.writeHead(200, {'x-auth-token': token}).send();
 });
 
 //creat login inputs validator
