@@ -8,6 +8,8 @@ import Home from "./routes/home";
 import Login from "./login/login";
 import Reg from "./register/reg";
 
+import Dashboard from "./dashboard/dashboard"
+
 
 export default function Main() {
     return (
@@ -16,6 +18,9 @@ export default function Main() {
           <Route path="/" element={<Home/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/reguser" element={<Reg/>} />
+          <Route path="/dashboard" element={<Dashboard/>} />
+
+
           
         </Routes>
       </BrowserRouter>

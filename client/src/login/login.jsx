@@ -52,7 +52,9 @@ class Login extends Component {
       .then((res) => {
         // var myHeaders = new Headers();
         // console.log(myHeaders.get('x-auth-token'));
-        console.log(res);
+        console.log(res.status);
+        if(res.status == 200) window.location.href = "http://localhost:3000/dashboard";
+ 
         localStorage.setItem('token',res.headers['x-auth-token'])
       })
       .catch(err => {
