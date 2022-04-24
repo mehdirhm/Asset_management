@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import userIsLogin from '../auth/userIsLogin.js';
 
 
 class Login extends Component {
@@ -17,6 +17,11 @@ class Login extends Component {
       
     };
   }
+
+
+
+  
+
 
   handleInputChange = e => {
     this.setState({
@@ -53,9 +58,13 @@ class Login extends Component {
         // var myHeaders = new Headers();
         // console.log(myHeaders.get('x-auth-token'));
         console.log(res.status);
-        if(res.status == 200) window.location.href = "http://localhost:3000/dashboard";
+        if(userIsLogin(res)) {
+          localStorage.setItem('token',res.headers['x-auth-token'])
+          window.location.href = "http://localhost:3000/dashboard";
+
+        };
  
-        localStorage.setItem('token',res.headers['x-auth-token'])
+        
       })
       .catch(err => {
        alert(err.response.data)
