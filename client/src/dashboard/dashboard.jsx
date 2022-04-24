@@ -37,7 +37,7 @@ class Dashboard extends Component {
             url:"http://localhost:3030/auth",
             // data:localStorage.getItem('token'),
             headers:{
-                'token' : localStorage.getItem('token'),
+                'x-auth-token' : localStorage.getItem('token'),
 
             }
             

@@ -1,7 +1,8 @@
 import Express from 'express';
 import config from 'config';
-import login from './routes/login.js'
-import reguser from './routes/reguser.js'
+import login from './routes/login.js';
+import reguser from './routes/reguser.js';
+import auth from './routes/auth.js';
 import cors from 'cors';
 import mongoose from 'mongoose';
 const app = Express();
@@ -26,6 +27,7 @@ mongoose.connect('mongodb://localhost/asset_management')
 app.use(cors(corsOptions));
 app.use(Express.json());
 app.use('/login', login);
+app.use('/auth', auth);
 app.use('/reguser',reguser);
 
 const port = process.env.PORT || 3030;
