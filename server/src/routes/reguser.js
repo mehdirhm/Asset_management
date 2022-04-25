@@ -14,6 +14,7 @@ const router = Router();
 //the post method of registering a new user
 router.post('/',auth ,async (req, res) => {
   
+  
   const date = new Date();
 
   //validating the user inputs

@@ -6,9 +6,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import userIsLogin from '../auth/userIsLogin.js';
 
+import auth from '../auth/auth.js'
+import { useHistory } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
+
+    
     super(props);
 
     this.state = {
@@ -19,7 +23,7 @@ class Login extends Component {
   }
 
 
-
+  
   
 
 
@@ -59,15 +63,30 @@ class Login extends Component {
         // console.log(myHeaders.get('x-auth-token'));
         console.log(res.status);
         if(userIsLogin(res)) {
-          localStorage.setItem('token',res.headers['x-auth-token'])
-          window.location.href = "http://localhost:3000/dashboard";
+          // localStorage.setItem('token',res.headers['x-auth-token'])
+          auth.login( () => {
+           
+            // console.log(window.location)
+            // this.props.history.push("/dashboard" , { state: auth.isAuthenticated()})
+          //  this.props.history.push("/dashboard", { state: auth.isAuthenticated()})
+            
+            // window.location.href = "http://localhost:3000/dashboard";
+            //  window.location.reload(false);
+            console.log(auth.isAuthenticated())
+           
+         
+
+       })
 
         };
+        
+
+        
  
         
       })
       .catch(err => {
-       alert(err.response.data)
+      //  alert(err.response.data)
        
       });
 
