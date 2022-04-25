@@ -9,74 +9,74 @@
         
 
 
-import './dashboard.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import './dashboard.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import ReactDOM from 'react-dom';
-import auth from '../auth/auth.js';
-
-
-import { useState } from 'react';
+// import React, { Component } from 'react';
+// import { Route } from 'react-router-dom';
+// import ReactDOM from 'react-dom';
+// import auth from '../auth/auth.js';
 
 
-// let isLogin = reqForAuth();
+// import { useState } from 'react';
 
 
-// class Dashboard extends Component {
+// // let isLogin = reqForAuth();
 
 
-//     constructor(props) {
-//         super(props);
+// // class Dashboard extends Component {
+
+
+// //     constructor(props) {
+// //         super(props);
     
-//         this.state = {
+// //         this.state = {
           
           
-//         };
-//       }
+// //         };
+// //       }
 
      
 
-//       render() {
+// //       render() {
 
-//         return (
-//             <div>
-//                 {/* <RenderDash/> */}
+// //         return (
+// //             <div>
+// //                 {/* <RenderDash/> */}
                 
-//             </div>
-//         )
+// //             </div>
+// //         )
             
-// window.location.reload(false);
-function DashboardRender(props) {
-  return <h1>Welcome back!</h1>;
-}
+// // window.location.reload(false);
+// function DashboardRender(props) {
+//   return <h1>Welcome back!</h1>;
+// }
 
-function AccessDenied(props) {
-  return <h1>Please sign up.</h1>;
-}
+// function AccessDenied(props) {
+//   return <h1>Please sign up.</h1>;
+// }
 
-  const RenderDash = () => {
+//   const RenderDash = () => {
 
-    // const [au, setAuth] = useState(0);
+//     // const [au, setAuth] = useState(0);
 
 
-    console.log(auth.isAuthenticated())
-    // window.location.reload(false);
+//     console.log(auth.isAuthenticated())
+//     // window.location.reload(false);
     
-  if (auth.isAuthenticated()) {
+//   if (auth.isAuthenticated()) {
 
     
-    return <DashboardRender  />;
-  }
-  return <AccessDenied />;
-}
+//     return <DashboardRender  />;
+//   }
+//   return <AccessDenied />;
+// }
                    
-ReactDOM.render(
-  // Try changing to isLoggedIn={true}:
-  <RenderDash  />,
-  document.getElementById('root')
-);
+// ReactDOM.render(
+//   // Try changing to isLoggedIn={true}:
+//   <RenderDash  />,
+//   document.getElementById('root')
+// );
 
         
 
@@ -85,4 +85,4 @@ ReactDOM.render(
    
 
 
-export default RenderDash;
+// export default RenderDash;

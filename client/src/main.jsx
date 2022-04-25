@@ -10,7 +10,8 @@ import Home from "./routes/home";
 import Login from "./login/login";
 import Reg from "./register/reg";
 
-import RenderDash from "./dashboard/renderDash"
+import Dashboard from "./dashboard/dashboard"
+import RequireAuth from "./auth/RequireAuth"
 
 
 export default function Main() {
@@ -20,7 +21,10 @@ export default function Main() {
           <Route exact path="/" element={<Home/>} />
           <Route exact path="/login" element={<Login/>} />
           <Route exact path="/reguser" element={<Reg/>} />
-          <Route exact path="/dashboard" element={<RenderDash/>} />s
+          <Route exact path="/dashboard" element={
+          <RequireAuth>
+          <Dashboard />
+        </RequireAuth>} />
 
 
           

@@ -63,14 +63,15 @@ class Login extends Component {
         // console.log(myHeaders.get('x-auth-token'));
         console.log(res.status);
         if(userIsLogin(res)) {
-          // localStorage.setItem('token',res.headers['x-auth-token'])
+          localStorage.setItem('token',res.headers['x-auth-token'])
+          window.location.href = "http://localhost:3000/dashboard";
           auth.login( () => {
            
             // console.log(window.location)
             // this.props.history.push("/dashboard" , { state: auth.isAuthenticated()})
           //  this.props.history.push("/dashboard", { state: auth.isAuthenticated()})
             
-            // window.location.href = "http://localhost:3000/dashboard";
+            
             //  window.location.reload(false);
             console.log(auth.isAuthenticated())
            
