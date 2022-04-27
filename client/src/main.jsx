@@ -22,7 +22,7 @@ export default function Main() {
           <Route exact path="/login" element={<Login/>} />
           <Route exact path="/reguser" element={<Reg/>} />
           <Route exact path="/dashboard" element={
-          <RequireAuth>
+          <RequireAuth >
           <Dashboard />
         </RequireAuth>} />
 

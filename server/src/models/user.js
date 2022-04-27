@@ -43,7 +43,7 @@ function validateUser(user) {
     fullname: joi.string().min(5).max(50).required(),
     username: joi.string().min(5).max(255).required(),
     password: joi.string().min(5).max(255).required(),
-    // isAdmin:joi.bool()
+    isAdmin:joi.bool()
   });
   return schema.validate(user);
 }

@@ -1,5 +1,5 @@
 import {Navigate , Outlet} from 'react-router';
-import Dashboard from '../dashboard/dashboard'
+import DashboardNavbar from '../dashboard/dashboard'
 import Home from '../routes/home'
 
 
@@ -11,7 +11,7 @@ import axios from 'axios';
 
 
 
-const useAuth =  () => {
+const useAuth =  (props) => {
 
     const user = { loggedIn: false };
     // localStorage.removeItem('token');
@@ -55,7 +55,8 @@ const useAuth =  () => {
 
 const RequireAuth = () => {
     const isAuth = useAuth();
-    return !isAuth ? <Home/> : <Dashboard/>;
+    return !isAuth ? <Home/> : <DashboardNavbar/>;
+    // return !isAuth ? <Home/> : <Navigate to="/dashboard"  />;;
 }
 
 export default RequireAuth;

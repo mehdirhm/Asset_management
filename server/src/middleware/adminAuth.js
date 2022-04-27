@@ -12,6 +12,7 @@ export default function (req, res, next) {
   try {
     const decoded = jwt.verify(token, config.get('jwtPrivateKey'));
     req.user = decoded;
+
     if (!req.user.isAdmin) return res.status(401).send('Access denied. only admins can add new users.');
     next();
   }

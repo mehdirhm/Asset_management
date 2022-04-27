@@ -5,8 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
-
+import userIsLogin from '../auth/userIsLogin';
 class Reg extends Component {
   constructor(props) {
     super(props);
@@ -59,7 +58,17 @@ class Reg extends Component {
 
   })
   
-      .then((res) => alert(res.data))
+      .then((res) => {
+
+        if(res.status === 200){
+          // localStorage.setItem('token',res.headers['x-auth-token'])
+          window.location.href = "http://localhost:3000/dashboard";
+
+        }
+        alert(res.data);
+        
+
+      })
       .catch(err => {
        alert(err.response.data);
       });
