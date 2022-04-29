@@ -2,6 +2,7 @@ import Express from 'express';
 import config from 'config';
 import login from './routes/login.js';
 import reguser from './routes/reguser.js';
+import assets from './routes/assets.js'
 import auth from './routes/auth.js';
 import cors from 'cors';
 import mongoose from 'mongoose';
@@ -28,7 +29,8 @@ app.use(cors(corsOptions));
 app.use(Express.json());
 app.use('/login', login);
 app.use('/auth', auth);
-app.use('/reguser',reguser);
+app.use('/reguser', reguser);
+app.use('/assets', assets);
 
 const port = process.env.PORT || 3030;
 app.listen(port, () => console.log(`listening on port ${port}`));
