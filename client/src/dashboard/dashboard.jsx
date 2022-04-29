@@ -19,6 +19,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { Users as UsersIcon } from '../icons/users';
 import { Bell as BellIcon } from '../icons/bell';
+import { UserCircle as UserCircleIcon } from '../icons/user-circle';
+
 
 
 
@@ -93,6 +95,17 @@ export const DashboardNavbar = (props) => {
               </Badge>
             </IconButton>
           </Tooltip>
+
+          <Avatar
+            sx={{
+              height: 40,
+              width: 40,
+              ml: 1
+            }}
+            src="/static/images/avatars/avatar_1.png"
+          >
+            <UserCircleIcon fontSize="small" />
+          </Avatar>
 
           </Toolbar>
 
