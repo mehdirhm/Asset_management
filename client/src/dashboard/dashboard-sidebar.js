@@ -1,7 +1,7 @@
 import {useEffect} from 'react'
+// import { Link } from "react-router-dom";
 // import { useRouter } from 'next/router'
 import { Box, Button, Divider, Drawer, Typography, useMediaQuery } from '@mui/material';
-import NextLink from 'next/link';
 import { Logo } from './logo';
 import PropTypes from 'prop-types';
 import {
@@ -13,9 +13,16 @@ import {
   } from "react-router-dom";
 import theme from '../theme/index'
 
+
+
+// import { WithNextRouter } from 'storybook-addon-next-router/dist/decorators';
+
+// export const decorators = [WithNextRouter];
+
 export const DashboardSidebar = (props) => {
     const { open, onClose } = props;
     // const router = useRouter();
+    // console.log(router);
     // const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg') , { 
     //     defaultMatches : true,
     //     noSsr: false
@@ -23,9 +30,7 @@ export const DashboardSidebar = (props) => {
 
     useEffect(
         () => {
-            // if(!router.isReady) {
-            //     return;
-            // }
+           
 
             if(open) {
                 onClose?.();
@@ -45,11 +50,11 @@ export const DashboardSidebar = (props) => {
                  }}>
                      <div>
                          <Box sx={{ p: 3}}>
-                             <NextLink
-                                href="/"
-                                passHref
+                             <Link
+                                to="/"
+                                
                              >
-                                 <a>
+                                 
                                      <Logo
                                        
                                         sx={{ 
@@ -60,9 +65,9 @@ export const DashboardSidebar = (props) => {
 
 
                                      
-                                 </a>
+                                 
 
-                             </NextLink>
+                             </Link>
                              
                          </Box>
 
