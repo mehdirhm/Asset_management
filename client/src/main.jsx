@@ -12,6 +12,7 @@ import Reg from "./register/reg";
 
 import Dashboard from "./dashboard/dashboard"
 import RequireAuth from "./auth/RequireAuth"
+import {DashboardLayout} from './dashboard/dashboard-layout'
 
 
 export default function Main() {
@@ -23,7 +24,7 @@ export default function Main() {
           <Route exact path="/reguser" element={<Reg/>} />
           <Route exact path="/dashboard" element={
           <RequireAuth >
-          <Dashboard />
+          <DashboardLayout />
         </RequireAuth>} />
 
 

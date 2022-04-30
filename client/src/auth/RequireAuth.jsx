@@ -1,5 +1,5 @@
 import {Navigate , Outlet} from 'react-router';
-import DashboardNavbar from '../dashboard/dashboard'
+import {DashboardLayout} from '../dashboard/dashboard-layout'
 import Home from '../routes/home'
 
 
@@ -55,7 +55,7 @@ const useAuth =  (props) => {
 
 const RequireAuth = () => {
     const isAuth = useAuth();
-    return !isAuth ? <Home/> : <DashboardNavbar/>;
+    return !isAuth ? <Home/> : <DashboardLayout/>;
     // return !isAuth ? <Home/> : <Navigate to="/dashboard"  />;;
 }
 
