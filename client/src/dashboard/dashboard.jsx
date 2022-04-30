@@ -118,9 +118,9 @@ export const DashboardNavbar = (props) => {
 
 }
 
-// DashboardNavbar.propTypes = {
-//   onSidebarOpen: PropTypes.func
-// };
+DashboardNavbar.propTypes = {
+  onSidebarOpen: PropTypes.func
+};
 
 export default DashboardNavbar
 
