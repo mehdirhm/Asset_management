@@ -1,8 +1,14 @@
 import React from 'react';
-import './index.css';
+
+
 import { render } from "react-dom";
 import reportWebVitals from './reportWebVitals';
+
+
+import './fonts/Iranian-Sans.ttf';
 import Main from "./main"
+import './index.css';
+
 
 
 

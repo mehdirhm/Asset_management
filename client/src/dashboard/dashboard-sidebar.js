@@ -11,7 +11,9 @@ import {
     Link,
     useParams
   } from "react-router-dom";
-import theme from '../theme/index'
+import { styled } from '@mui/material/styles';
+
+// import theme from '../theme/index'
 
 
 
@@ -21,12 +23,14 @@ import theme from '../theme/index'
 
 export const DashboardSidebar = (props) => {
     const { open, onClose } = props;
+    const { theme } = props;
     // const router = useRouter();
     // console.log(router);
-    // const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg') , { 
-    //     defaultMatches : true,
-    //     noSsr: false
-    // });
+    console.log(theme)
+    const lgUp = useMediaQuery(() => theme.breakpoints.up('lg') , { 
+        defaultMatches : true,
+        noSsr: false
+    });
 
     useEffect(
         () => {
@@ -48,8 +52,9 @@ export const DashboardSidebar = (props) => {
                     flexDirection: 'column',
                     height: '100%',
                  }}>
-                     <div>
+                    <div>
                          <Box sx={{ p: 3}}>
+                             
                              <Link
                                 to="/"
                                 
@@ -79,12 +84,12 @@ export const DashboardSidebar = (props) => {
                              <Box
                                 sx={{
                                     alignItems: 'center',
-                                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                                    backgroundColor: '#363062',
                                     cursor: 'pointer',
                                     display: 'flex',
                                     justifyContent: 'space-between',
                                     px:3,
-                                    py:11,
+                                    py:'11px',
                                     borderRadius: 1
 
 
@@ -92,7 +97,33 @@ export const DashboardSidebar = (props) => {
 
                                     
                                 }}
-                             >
+                             >  
+
+
+                                                    <div>
+                                                      <Typography
+                                                        color="inherit"
+                                                        variant="subtitle1"
+                                                        fontFamily='Vazir'
+                                                      >
+                                                       مهدی رحیم سیرت
+                                                      </Typography>
+                                                      <Typography
+                                                        color="neutral.400"
+                                                        variant="body2"
+                                                        fontFamily='Vazir'
+                                                      >
+                                                        
+                                                        {' '}
+                                                       نوع دسترسی : مدیر 
+                                                      </Typography>
+                                                      
+                                                    </div>
+
+                                                         
+
+
+                               
 
 
                              </Box>
@@ -130,7 +161,24 @@ export const DashboardSidebar = (props) => {
         // );
 
 
-        
+        if (lgUp) {
+          return (
+            <Drawer
+              anchor="right"
+              open
+              PaperProps={{
+                sx: {
+                  backgroundColor: '#2A2550',
+                  color: '#FFFFFF',
+                  width: 280
+                }
+              }}
+              variant="permanent"
+            >
+              {content}
+            </Drawer>
+          );
+        }
 
       
 
@@ -141,7 +189,7 @@ export const DashboardSidebar = (props) => {
           open={open}
           PaperProps={{
             sx: {
-              backgroundColor: 'neutral.900',
+              backgroundColor: '#2A2550',
               color: '#FFFFFF',
               width: 280
             }

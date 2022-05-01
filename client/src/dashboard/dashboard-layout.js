@@ -4,6 +4,8 @@ import {DashboardNavbar} from './dashboard'
 import { useState } from 'react';
 import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import theme from '../theme/index'
+import { ThemeProvider } from "@mui/material";
 
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
@@ -41,10 +43,14 @@ export const DashboardLayout = (props) => {
             <DashboardNavbar
                 onSidebarOpen={() => setSidebarOpen(true)}
             />
-            <DashboardSidebar
-                onClose={() => setSidebarOpen(false)}
-                open={isSidebarOpen}
-            />            
+
+
+                        <DashboardSidebar
+                            onClose={() => setSidebarOpen(false)}
+                            open={isSidebarOpen}
+                            theme={theme}
+                            
+                        />            
         </>
     )
 }
