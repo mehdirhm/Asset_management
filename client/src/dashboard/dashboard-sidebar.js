@@ -12,14 +12,30 @@ import {
     useParams
   } from "react-router-dom";
 import { styled } from '@mui/material/styles';
+import { ChartBar as ChartBarIcon } from '../icons/chart-bar';
 
 // import theme from '../theme/index'
 
-
+import { NavItem } from './nav-item';
 
 // import { WithNextRouter } from 'storybook-addon-next-router/dist/decorators';
 
 // export const decorators = [WithNextRouter];
+
+
+const items = [
+  {
+  href: '/',
+  icon : (<ChartBarIcon fontSize="small" />),
+  title : ' داشبورد',
+  },
+  {
+    href: '/assets',
+    icon : (<ChartBarIcon fontSize="small" />),
+    title : ' دارایی ها',
+    }
+]
+
 
 export const DashboardSidebar = (props) => {
     const { open, onClose } = props;
@@ -119,6 +135,9 @@ export const DashboardSidebar = (props) => {
                                                       </Typography>
                                                       
                                                     </div>
+                                                    
+
+                                        
 
                                                          
 
@@ -131,6 +150,33 @@ export const DashboardSidebar = (props) => {
                          </Box>
 
                      </div>
+
+                                                       <Divider
+                                                      sx={{
+                                                        width: '100%',
+                                                        borderColor: '#FFFFFF',
+                                                        my:3
+                                                      }}
+                                                      />
+                                                      <Box
+                                                      
+                                                       sx={{ 
+                                                       
+                                                         
+                                                         flexGrow: 1 }}>
+                                                        {items.map((item) => (
+                                                          <NavItem
+                                                           
+                                                            
+                                                            key={item.title}
+                                                            icon={item.icon}
+                                                            href={item.href}
+                                                            title={item.title}
+                                                          />
+                                                  ))}
+                                                </Box>
+
+
 
 
 
