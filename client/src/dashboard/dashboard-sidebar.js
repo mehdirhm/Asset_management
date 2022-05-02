@@ -30,7 +30,7 @@ const items = [
   title : ' داشبورد',
   },
   {
-    href: '/asset',
+    href: '/assets',
     icon : (<ChartBarIcon fontSize="small" />),
     title : ' دارایی ها',
     }

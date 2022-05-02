@@ -13,7 +13,7 @@ import Reg from "./register/reg";
 import Dashboard from "./dashboard/dashboard"
 import RequireAuth from "./auth/RequireAuth"
 import {DashboardLayout} from './dashboard/dashboard-layout'
-
+import Assets from "./routes/assets";
 
 export default function Main() {
     return (
@@ -22,6 +22,7 @@ export default function Main() {
           <Route exact path="/" element={<Home/>} />
           <Route exact path="/login" element={<Login/>} />
           <Route exact path="/reguser" element={<Reg/>} />
+          <Route exact path="/assets" element={<Assets/>} />
           <Route exact path="/dashboard" element={
           <RequireAuth >
           <DashboardLayout />
