@@ -44,13 +44,17 @@ export const DashboardLayout = (props) => {
                 onSidebarOpen={() => setSidebarOpen(true)}
             />
 
+                    <ThemeProvider theme={theme}>
 
-                        <DashboardSidebar
+                    <DashboardSidebar
                             onClose={() => setSidebarOpen(false)}
                             open={isSidebarOpen}
-                            theme={theme}
                             
-                        />            
+                            
+                        />    
+
+                    </ThemeProvider>
+                               
         </>
     )
 }

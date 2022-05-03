@@ -42,8 +42,8 @@ export const DashboardSidebar = (props) => {
     const { theme } = props;
     // const router = useRouter();
     // console.log(router);
-    console.log(theme)
-    const lgUp = useMediaQuery(() => theme.breakpoints.up('lg') , { 
+
+    const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg') , { 
         defaultMatches : true,
         noSsr: false
     });
@@ -166,7 +166,7 @@ export const DashboardSidebar = (props) => {
                                                          flexGrow: 1 }}>
                                                         {items.map((item) => (
                                                           <NavItem
-                                                           
+                                                            
                                                             
                                                             key={item.title}
                                                             icon={item.icon}
