@@ -5,11 +5,13 @@
   font-weight: bold;
   }
    */
-   @font-face {
+   /* @font-face {
     font-family: 'Vazir';
     src: local("Vazir") , url("./fonts/Vazir.ttf") format('truetype');
   }   
-   
+    */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400');
 
 body {
 
@@ -19,10 +21,10 @@ body {
   margin: 0;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
-  /* -webkit-font-smoothing: antialiased; */
-  /* -moz-osx-font-smoothing: grayscale; */
-   font-family: 'Vazir'; 
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+   /* font-family: 'Vazir';  */
 
    background-color: #ddd;
 }

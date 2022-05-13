@@ -5,7 +5,7 @@ import ReactDOM  from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
 
-import './fonts/Iranian-Sans.ttf';
+// import './fonts/Iranian-Sans.ttf';
 import Main from "./main"
 import './index.css';
 
