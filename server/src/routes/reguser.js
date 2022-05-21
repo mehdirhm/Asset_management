@@ -1,4 +1,3 @@
-// import auth from '../middleware/auth';
 import bcrypt from 'bcrypt';
 import _ from 'lodash';
 import { User, validate } from '../models/user.js';
@@ -6,15 +5,8 @@ import { Router } from 'express';
 import auth from '../middleware/adminAuth.js';
 const router = Router();
 
-// router.get('/me', auth, async (req, res) => {
-//   const user = await User.findById(req.user._id).select('-password');
-//   res.send(user);
-// });
-
 //the post method of registering a new user
 router.post('/',auth ,async (req, res) => {
-  
-  
   const date = new Date();
 
   //validating the user inputs
