@@ -14,6 +14,13 @@ import Dashboard from "./dashboard/dashboard"
 import RequireAuth from "./auth/RequireAuth"
 import {DashboardLayout} from './dashboard/dashboard-layout'
 import Assets from "./routes/assets";
+import AddAssets from "./routes/add-assets";
+import Hardware from "./routes/hardware";
+import Software from "./routes/software";
+
+
+
+
 
 export default function Main() {
     return (
@@ -23,6 +30,9 @@ export default function Main() {
           <Route exact path="/login" element={<Login/>} />
           <Route exact path="/reguser" element={<Reg/>} />
           <Route exact path="/assets" element={<Assets/>} />
+          <Route exact path="/add-asset" element={<AddAssets/>} />
+          <Route exact path="/hardware" element={<Hardware/>} />
+          <Route exact path="/software" element={<Software/>} />
           <Route exact path="/dashboard" element={
           <RequireAuth >
           <DashboardLayout />
