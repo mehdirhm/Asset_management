@@ -143,7 +143,7 @@ export default function Software() {
     (newRow, oldRow) =>
       new Promise((resolve, reject) => {
         axios.put('http://localhost:3030/assets', {
-            data: newRow
+            data: {...newRow , type:"sw"} 
             
           });
         
@@ -250,6 +250,7 @@ export default function Software() {
         location: item.location,
         manufacturer: item.manufacturer,
         currentUser: item.currentUser.fullName,
+        position:item.currentUser.position,
       });
     });
   }
@@ -319,10 +320,11 @@ export default function Software() {
             rows={sw}
             columns={[
               { field: "name", headerName: "Name", width: 150, editable: true },
-              { field: "serialNumber", headerName: "Serial No", width: 150 },
-              { field: "location", headerName: "Location", width: 150 },
-              { field: "manufacturer", headerName: "Manufacturer", width: 150 },
-              { field: "currentUser", headerName: "Current User", width: 150 },
+              { field: "serialNumber", headerName: "Serial No", width: 150 , editable: true},
+              { field: "location", headerName: "Location", width: 150 , editable: true },
+              { field: "manufacturer", headerName: "Manufacturer", width: 150 , editable: true },
+              { field: "currentUser", headerName: "Current User", width: 150 , editable: true },
+              { field: "position", headerName: "Position", width: 150  , editable: true}
             ]}
           />
 
