@@ -250,6 +250,7 @@ export default function Software() {
         location: item.location,
         manufacturer: item.manufacturer,
         currentUser: item.currentUser.fullName,
+        position:item.currentUser.position,
       });
     });
   }
@@ -323,6 +324,7 @@ export default function Software() {
               { field: "location", headerName: "Location", width: 150 },
               { field: "manufacturer", headerName: "Manufacturer", width: 150 },
               { field: "currentUser", headerName: "Current User", width: 150 },
+              { field: "position", headerName: "Position", width: 150 }
             ]}
           />
 
