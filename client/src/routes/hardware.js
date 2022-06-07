@@ -132,7 +132,7 @@ export default function Hardware() {
     (newRow, oldRow) =>
       new Promise((resolve, reject) => {
         axios.put("http://localhost:3030/assets", {
-          data: { ...newRow, type: "sw" },
+          data: { ...newRow, type: "hw" },
         });
       }),
     []
