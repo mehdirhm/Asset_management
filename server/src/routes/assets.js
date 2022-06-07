@@ -109,17 +109,18 @@ router.put('/:id', /*auth,*/ async (req, res) => {
     res.send("please send the asset type!!!") 
 });
 
-router.delete('/:type/:id', /*auth,*/ async (req, res) => {
-    if(req.params.type=='hw'){
-        const hw = await Hardware.findByIdAndRemove(req.params.id);
+router.delete('/', /*auth,*/ async (req, res) => {
+    console.log("req is:" ,req.body.type, req.body.id);
+    /*if(req.body.type=='hw'){
+        const hw = await Hardware.findByIdAndRemove(req.body.id);
         if (!hw) return res.status(404).send('The hardware with the given ID was not found.');
         res.send(hw);
     }
-    if(req.params.type=='sw'){
-        const sw = await Hardware.findByIdAndRemove(req.params.id);
+    if(req.body.type=='sw'){
+        const sw = await Hardware.findByIdAndRemove(req.body.id);
         if (!sw) return res.status(404).send('The software with the given ID was not found.');
         res.send(sw);
-    }
+    }*/
   });
 
 export default router;
