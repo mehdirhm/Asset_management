@@ -32,7 +32,7 @@ export default function Assets() {
     // console.log(selectionModel)
     setRows((rows) => rows.filter((r) => !selectionModel.includes(r._id)));
     axios.delete('http://localhost:3030/assets', {
-      body: {
+      data: {
         type: "hw",
         id : selectionModel,
       }
@@ -49,7 +49,7 @@ export default function Assets() {
       rows_sw.filter((r) => !selectionModelSw.includes(r._id))
     );
     axios.delete('http://localhost:3030/assets', {
-      body: {
+      data: {
         type: "sw",
         id : selectionModelSw,
       }
