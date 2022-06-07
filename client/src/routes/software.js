@@ -320,11 +320,11 @@ export default function Software() {
             rows={sw}
             columns={[
               { field: "name", headerName: "Name", width: 150, editable: true },
-              { field: "serialNumber", headerName: "Serial No", width: 150 },
-              { field: "location", headerName: "Location", width: 150 },
-              { field: "manufacturer", headerName: "Manufacturer", width: 150 },
-              { field: "currentUser", headerName: "Current User", width: 150 },
-              { field: "position", headerName: "Position", width: 150 }
+              { field: "serialNumber", headerName: "Serial No", width: 150 , editable: true},
+              { field: "location", headerName: "Location", width: 150 , editable: true },
+              { field: "manufacturer", headerName: "Manufacturer", width: 150 , editable: true },
+              { field: "currentUser", headerName: "Current User", width: 150 , editable: true },
+              { field: "position", headerName: "Position", width: 150  , editable: true}
             ]}
           />
 
