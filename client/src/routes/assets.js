@@ -1,9 +1,6 @@
 import { DashboardLayout } from "../dashboard/dashboard-layout";
 import axios from "axios";
 import * as React from "react";
-
-// import { useAxios } from "use-axios-client";
-// import * as React from 'react';
 import { useState, useEffect } from "react";
 // import { DataGrid } from '@mui/x-data-grid';
 import { DataGrid } from "@mui/x-data-grid";
@@ -26,7 +23,6 @@ export default function Assets() {
   // const [checkboxSelection, setCheckboxSelection] = useState(true);
   const [selectionModel, setSelectionModel] = useState([]);
   const [selectionModelSw, setSelectionModelSw] = useState([]);
-
   const onDelete_1 = () => {
     // console.log(selectionModel.includes('626d78f9110b8bcc06b21148'))
     // console.log(selectionModel)
@@ -38,8 +34,8 @@ export default function Assets() {
       }
       
     });
-    console.log(rows);
-    // setSelectionModel([]);
+    // console.log(rows);
+    
   };
 
   const onDelete_2 = () => {
@@ -120,11 +116,11 @@ export default function Assets() {
     rows_sw.map((item) => {
       sw.push({
         id: item._id,
-        col1: item.name,
-        col2: item.serialNumber,
-        col3: item.location,
-        col4: item.manufacturer,
-        col5: item.currentUser.fullName,
+        name: item.name,
+        serialNumber: item.serialNumber,
+        location: item.location,
+        manufacturer: item.manufacturer,
+        currentUser: item.currentUser.fullName,
       });
     });
   }
@@ -208,11 +204,11 @@ export default function Assets() {
             loading={loading}
             rows={sw}
             columns={[
-              { field: "col1", headerName: "Name", width: 150 },
-              { field: "col2", headerName: "Serial No", width: 150 },
-              { field: "col3", headerName: "Location", width: 150 },
-              { field: "col4", headerName: "Manufacturer", width: 150 },
-              { field: "col5", headerName: "Current User", width: 150 },
+              { field: "name", headerName: "Name", width: 150 },
+              { field: "serialNumber", headerName: "Serial No", width: 150 },
+              { field: "location", headerName: "Location", width: 150 },
+              { field: "manufacturer", headerName: "Manufacturer", width: 150 },
+              { field: "currentUser", headerName: "Current User", width: 150 },
             ]}
           />
 
