@@ -77,7 +77,7 @@ router.post(
 router.put(
   "/",
   /*auth,*/ async (req, res) => {
-    console.log("req is:", req.body);/*
+    console.log(req.body);
     if (req.body.type == "sw") {
       const { error } = SwValidate(req.body);
       if (error) return res.status(400).send(error.details[0].message);
@@ -89,8 +89,8 @@ router.put(
           location: req.body.location,
           manufacturer: req.body.manufacturer,
           currentUser: {
-            fullname: req.body.currentUser.fullname,
-            position: req.body.currentUser.position,
+            fullname: req.body.currentUser,
+            position: req.body.position,
           },
         },
         { new: true }
@@ -113,8 +113,8 @@ router.put(
           location: req.body.location,
           manufacturer: req.body.manufacturer,
           currentUser: {
-            fullname: req.body.currentUser.fullname,
-            position: req.body.currentUser.position,
+            fullname: req.body.currentUser,
+            position: req.body.position,
           },
           ip: req.body.ip,
         },
@@ -127,15 +127,15 @@ router.put(
           .send("The software with the given ID was not found.");
       res.send(hw);
     }
-    res.send("please send the asset type!!!");*/
+    res.send("please send the asset type!!!");
   }
 );
 
 router.delete(
   "/",
   /*auth,*/ async (req, res) => {
-    console.log("req is:", req.body.type, req.body.id);
-    /*if(req.body.type=='hw'){
+    console.log("req is:", req.body);
+    if(req.body.type=='hw'){
         const hw = await Hardware.findByIdAndRemove(req.body.id);
         if (!hw) return res.status(404).send('The hardware with the given ID was not found.');
         res.send(hw);
@@ -144,7 +144,7 @@ router.delete(
         const sw = await Hardware.findByIdAndRemove(req.body.id);
         if (!sw) return res.status(404).send('The software with the given ID was not found.');
         res.send(sw);
-    }*/
+    }
   }
 );
 
