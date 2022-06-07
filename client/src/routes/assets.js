@@ -31,6 +31,13 @@ export default function Assets() {
     // console.log(selectionModel.includes('626d78f9110b8bcc06b21148'))
     // console.log(selectionModel)
     setRows((rows) => rows.filter((r) => !selectionModel.includes(r._id)));
+    axios.delete('http://localhost:3030/asset', {
+      headers: {
+        type: "hw",
+        id : selectionModel,
+      }
+      
+    });
     console.log(rows);
     // setSelectionModel([]);
   };
@@ -43,8 +50,8 @@ export default function Assets() {
     );
     axios.delete('http://localhost:3030/asset', {
       headers: {
-        type: "hw",
-        id : selectionModel,
+        type: "sw",
+        id : selectionModelSw,
       }
       
     });
