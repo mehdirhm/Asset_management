@@ -41,6 +41,13 @@ export default function Assets() {
     setRows_sw((rows_sw) =>
       rows_sw.filter((r) => !selectionModelSw.includes(r._id))
     );
+    axios.delete('http://localhost:3030/asset', {
+      headers: {
+        type: "hw",
+        id : selectionModel,
+      }
+      
+    });
     // console.log(rows)
     // setSelectionModel([]);
   };
