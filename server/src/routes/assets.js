@@ -75,13 +75,14 @@ router.post(
 );
 
 router.put(
-  "/:id",
+  "/",
   /*auth,*/ async (req, res) => {
+    console.log("req is:", req.body);/*
     if (req.body.type == "sw") {
       const { error } = SwValidate(req.body);
       if (error) return res.status(400).send(error.details[0].message);
       const sw = await Software.findByIdAndUpdate(
-        req.params.id,
+        req.body.id,
         {
           name: req.body.name,
           serialNumber: req.body.serialNumber,
@@ -105,7 +106,7 @@ router.put(
       const { error } = HwValidate(req.body);
       if (error) return res.status(400).send(error.details[0].message);
       const hw = await Hardware.findByIdAndUpdate(
-        req.params.id,
+        req.body.id,
         {
           name: req.body.name,
           serialNumber: req.body.serialNumber,
@@ -126,7 +127,7 @@ router.put(
           .send("The software with the given ID was not found.");
       res.send(hw);
     }
-    res.send("please send the asset type!!!");
+    res.send("please send the asset type!!!");*/
   }
 );
 
