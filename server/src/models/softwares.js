@@ -18,12 +18,26 @@ const softwareSchema = new mongoose.Schema({
   manufacturer: { 
     type: String,
   },
+  installationDate: {
+    type: Date,
+  },
+  lastUpdate: {
+    type: Date,
+  },
+  description: {
+    type: String,
+  },
+  type: {
+    type: String,
+    required: true
+  },
   currentUser: {
     type: new mongoose.Schema({
         fullName: String,
         position: String
     }),
-  }
+  },
+  isLicense: Boolean,
 });
 
 const Software = mongoose.model('software', softwareSchema);
@@ -35,6 +49,10 @@ function validateSoftware(software) {
     serialNumber: joi.number().required(),
     location: joi.string().required(),
     manufacturer: joi.string(),
+    description: joi.string().min(5),
+    type: joi.string().required(),
+    installationDate: joi.date(),
+    lastUpdate: joi.date(),
   });
   return schema.validate(software);
 }

@@ -249,8 +249,8 @@ export default function Software() {
         serialNumber: item.serialNumber,
         location: item.location,
         manufacturer: item.manufacturer,
-        currentUser: item.currentUser.fullName,
-        position:item.currentUser.position,
+        currentUser: "reza",
+        position:"s",
       });
     });
   }

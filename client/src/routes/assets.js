@@ -120,7 +120,7 @@ export default function Assets() {
         serialNumber: item.serialNumber,
         location: item.location,
         manufacturer: item.manufacturer,
-        currentUser: item.currentUser.fullName,
+        currentUser: "ali",
       });
     });
   }

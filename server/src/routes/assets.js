@@ -26,29 +26,29 @@ const router = Router();
     await hw.save();
 })();*/
 
-router.get(
-  "/",
-  /*auth,*/ async (_req, res) => {
+router.get("/", /*auth, */async (_req, res) => {
     const software = await Software.find({}, { __v: 0, "currentUser._id": 0 });
     const hardware = await Hardware.find({}, { __v: 0, "currentUser._id": 0 });
     res.send({ sw: software, hw: hardware });
   }
 );
 
-router.post(
-  "/",
-  /*auth,*/ async (req, res) => {
+router.post("/", /*auth, */async (req, res) => {
     if (req.body.type == "hw") {
       const { error } = HwValidate(req.body);
       if (error) return res.status(400).send(error.details[0].message);
       const hardware = new Hardware({
         name: req.body.name,
         serialNumber: req.body.serialNumber,
+        propertyNumber: req.body.propertyNumber,
+        description: req.body.description,
+        type: req.body.type,
+        installationDate: req.body.installationDate,
         location: req.body.location,
         manufacturer: req.body.manufacturer,
         currentUser: {
-          fullname: req.body.currentUser.fullname,
-          position: req.body.currentUser.position,
+          fullname: req.body.fullname,
+          position: req.body.position,
         },
         ip: req.body.ip,
       });
@@ -63,9 +63,14 @@ router.post(
         serialNumber: req.body.serialNumber,
         location: req.body.location,
         manufacturer: req.body.manufacturer,
+        installationDate: req.body.installationDate,
+        description: req.body.description,
+        lastUpdate: req.body.lastUpdate,
+        type: req.body.type,
+        isLicense: req.body.isLicense,
         currentUser: {
-          fullname: req.body.currentUser.fullname,
-          position: req.body.currentUser.position,
+          fullname: req.body.fullname,
+          position: req.body.position,
         },
       });
       software = await software.save();
@@ -74,20 +79,21 @@ router.post(
   }
 );
 
-router.put(
-  "/",
-  /*auth,*/ async (req, res) => {
-    console.log(req.body);
+router.put("/", /*auth, */async (req, res) => {
     if (req.body.type == "sw") {
       const { error } = SwValidate(req.body);
       if (error) return res.status(400).send(error.details[0].message);
-      const sw = await Software.findByIdAndUpdate(
-        req.body.id,
+      const sw = await Software.findByIdAndUpdate(req.body.id, 
         {
           name: req.body.name,
           serialNumber: req.body.serialNumber,
           location: req.body.location,
           manufacturer: req.body.manufacturer,
+          installationDate: req.body.installationDate,
+          description: req.body.description,
+          lastUpdate: req.body.lastUpdate,
+          isLicense: req.body.isLicense,
+          type: req.body.type,
           currentUser: {
             fullname: req.body.currentUser,
             position: req.body.position,
@@ -96,22 +102,22 @@ router.put(
         { new: true }
       );
 
-      if (!sw)
-        return res
-          .status(404)
-          .send("The software with the given ID was not found.");
+      if (!sw) return res.status(404).send("The software with the given ID was not found.");
       res.send(sw);
     }
     if (req.body.type == "hw") {
       const { error } = HwValidate(req.body);
       if (error) return res.status(400).send(error.details[0].message);
-      const hw = await Hardware.findByIdAndUpdate(
-        req.body.id,
+      const hw = await Hardware.findByIdAndUpdate(req.body.id,
         {
           name: req.body.name,
           serialNumber: req.body.serialNumber,
           location: req.body.location,
           manufacturer: req.body.manufacturer,
+          propertyNumber: req.body.propertyNumber,
+          description: req.body.description,
+          type: req.body.type,
+          installationDate: req.body.installationDate,
           currentUser: {
             fullname: req.body.currentUser,
             position: req.body.position,
@@ -121,20 +127,14 @@ router.put(
         { new: true }
       );
 
-      if (!hw)
-        return res
-          .status(404)
-          .send("The software with the given ID was not found.");
+      if (!hw) return res.status(404).send("The software with the given ID was not found.");
       res.send(hw);
     }
     res.send("please send the asset type!!!");
   }
 );
 
-router.delete(
-  "/",
-  /*auth,*/ async (req, res) => {
-    console.log("req is:", req.body);
+router.delete("/", /*auth, */async (req, res) => {
     if(req.body.type=='hw'){
         const hw = await Hardware.findByIdAndRemove(req.body.id);
         if (!hw) return res.status(404).send('The hardware with the given ID was not found.');

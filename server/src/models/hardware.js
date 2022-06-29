@@ -11,9 +11,23 @@ const hardwareSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  propertyNumber: {
+    type: Number,
+    required: true,
+  },
+  description: {
+    type: String,
+  },
+  type: {
+    type: String,
+    required: true
+  },
   location: {
     type: String,
     required: true
+  },
+  installationDate: {
+    type: Date,
   },
   manufacturer: { 
     type: String,
@@ -26,7 +40,7 @@ const hardwareSchema = new mongoose.Schema({
         fullName: String,
         position: String
     }),
-  }
+  },
 });
 
 const Hardware = mongoose.model('hardware', hardwareSchema);
@@ -36,7 +50,11 @@ function validateHardware(hardware) {
   const schema = joi.object({
     name: joi.string().min(2).max(50).required(),
     serialNumber: joi.number().required(),
+    propertyNumber: joi.number().required(),
+    description: joi.string().min(5),
+    type: joi.string().required(),
     ip: joi.number(),
+    installationDate: joi.date(),
     location: joi.string().required(),
     manufacturer: joi.string(),
   });
