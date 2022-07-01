@@ -249,8 +249,12 @@ export default function Software() {
         serialNumber: item.serialNumber,
         location: item.location,
         manufacturer: item.manufacturer,
-        currentUser: "reza",
-        position:"s",
+        currentUser: item.currentUser.fullName,
+        description: item.description,
+        isLicense: item.isLicense,
+        lastUpdate: item.lastUpdate,
+        position: item.position,
+        type: item.type,
       });
     });
   }
@@ -319,12 +323,16 @@ export default function Software() {
             loading={loading}
             rows={sw}
             columns={[
-              { field: "name", headerName: "Name", width: 150, editable: true },
-              { field: "serialNumber", headerName: "Serial No", width: 150 , editable: true},
-              { field: "location", headerName: "Location", width: 150 , editable: true },
-              { field: "manufacturer", headerName: "Manufacturer", width: 150 , editable: true },
-              { field: "currentUser", headerName: "Current User", width: 150 , editable: true },
-              { field: "position", headerName: "Position", width: 150  , editable: true}
+              { field: "name", headerName: "Name", width: 150 },
+              { field: "serialNumber", headerName: "Serial No", width: 150 },
+              { field: "location", headerName: "Location", width: 150 },
+              { field: "manufacturer", headerName: "Manufacturer", width: 150 },
+              { field: "currentUser", headerName: "Current User", width: 150 },
+              { field: "description", headerName: "Description", width: 150 },
+              { field: "isLicense", headerName: "isLicense", width: 150 },
+              { field: "lastUpdate", headerName: "last Update", width: 150 },
+              { field: "position", headerName: "Position", width: 150 },
+              { field: "type", headerName: "type", width: 150 },
             ]}
           />
 

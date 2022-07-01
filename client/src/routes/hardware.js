@@ -224,6 +224,12 @@ export default function Hardware() {
         location: item.location,
         manufacturer: item.manufacturer,
         ip: item.ip,
+        // currentUser: item.currentUser.fullName,
+        // currentUser: item.currentUser.fullName,
+        installationDate: item.installationDate,
+        type: item.type,
+        description: item.description,
+        propertyNumber: item.propertyNumber,
       });
     });
     //     // console.log(hw)
@@ -297,11 +303,20 @@ processRowUpdate={processRowUpdate}
             loading={loading}
             rows={hw}
             columns={[
-              { field: "name", headerName: "Name", width: 150 , editable: true },
-              { field: "serialNumber", headerName: "Serial No", width: 150 , editable: true },
-              { field: "location", headerName: "Location", width: 150 , editable: true },
-              { field: "manufacturer", headerName: "Manufacturer", width: 150 , editable: true },
-              { field: "ip", headerName: "IP", width: 150 , editable: true },
+              { field: "name", headerName: "Name", width: 150 },
+              { field: "serialNumber", headerName: "Serial No", width: 150 },
+              { field: "location", headerName: "Location", width: 150 },
+              { field: "manufacturer", headerName: "Manufacturer", width: 150 },
+              { field: "propertyNumber", headerName: "property Number", width: 150 },
+              { field: "description", headerName: "Description", width: 150 },
+              { field: "installationDate", headerName: "installation Date", width: 150 },
+              { field: "position", headerName: "Position", width: 150 },
+
+              { field: "type", headerName: "type", width: 150 },
+              { field: "currentUser", headerName: "current User", width: 150 },
+
+
+              { field: "ip", headerName: "IP", width: 150 },
             ]}
             // keepNonExistentRowsSelected
           />
