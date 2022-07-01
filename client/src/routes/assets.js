@@ -110,8 +110,8 @@ export default function Assets() {
         location: item.location,
         manufacturer: item.manufacturer,
         ip: item.ip,
-        // currentUser: item.currentUser.fullName,
-        // currentUser: item.currentUser.fullName,
+        currentUser: item.currentUser.fullName,
+        position: item.currentUser.position,
         installationDate: item.installationDate,
         type: item.type,
         description: item.description,
@@ -134,7 +134,7 @@ export default function Assets() {
         description: item.description,
         isLicense: item.isLicense,
         lastUpdate: item.lastUpdate,
-        position: item.position,
+        position: item.currentUser.position,
         type: item.type,
         
 

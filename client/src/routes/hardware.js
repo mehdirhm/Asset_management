@@ -151,12 +151,27 @@ export default function Hardware() {
   const [selectionModel, setSelectionModel] = useState([]);
   const [selectionModelSw, setSelectionModelSw] = useState([]);
 
+  // const onDelete_1 = () => {
+  //   // console.log(selectionModel.includes('626d78f9110b8bcc06b21148'))
+  //   // console.log(selectionModel)
+  //   setRows((rows) => rows.filter((r) => !selectionModel.includes(r._id)));
+  //   console.log(rows);
+  //   // setSelectionModel([]);
+  // };
+
   const onDelete_1 = () => {
     // console.log(selectionModel.includes('626d78f9110b8bcc06b21148'))
     // console.log(selectionModel)
     setRows((rows) => rows.filter((r) => !selectionModel.includes(r._id)));
-    console.log(rows);
-    // setSelectionModel([]);
+    axios.delete('http://localhost:3030/assets', {
+      data: {
+        type: "hw",
+        id : selectionModel,
+      }
+      
+    });
+    // console.log(rows);
+    
   };
 
   const onDelete_2 = () => {
