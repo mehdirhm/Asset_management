@@ -4,27 +4,41 @@ import { Hardware, validate as HwValidate } from "../models/hardware.js";
 import auth from "../middleware/generalAuth.js";
 const router = Router();
 
-/*(async function(){
+(async function(){
     let sw = new Software({
-        name: "office",
-        serialNumber: 12345678,
-        location: "mohandesi",
-        manufacturer: "microsoft",
-        currentUser: {
-            fullName: "alireza",
-            position: "student"
-        }
+      name: "PowerPoint 2020",
+      serialNumber: 87654321,
+      location: "keshavarzi",
+      manufacturer: "Microsoft",
+      installationDate: "2016-11-28",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      lastUpdate: "2021-06-07",
+      type: "presentation program",
+      isLicense: true,
+      currentUser: {
+        fullName: "Mr.mohammadi",
+        position: "IT manager",
+      },
     }); 
     await sw.save();
+
     let hw = new Hardware({
-        name: "router",
-        serialNumber: 12345678,
-        location: "mohandesi",
-        manufacturer: "IBM",
-        ip: 1235485215
-    }); 
+      name: "Router d-link 1254",
+      serialNumber: 12345678,
+      propertyNumber: 1582,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      type: "network",
+      installationDate:"2020-08-15",
+      location: "Mohandesi",
+      manufacturer: "D-LINK",
+      currentUser: {
+        fullName: "doctor ahmadi",
+        position: "ostad yar",
+      },
+      ip: 16502978426164785,
+    });
     await hw.save();
-})();*/
+})();
 
 router.get("/", /*auth, */async (_req, res) => {
     const software = await Software.find({}, { __v: 0, "currentUser._id": 0 });
