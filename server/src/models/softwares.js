@@ -53,6 +53,11 @@ function validateSoftware(software) {
     type: joi.string().required(),
     installationDate: joi.date(),
     lastUpdate: joi.date(),
+    assetType: joi.string().required(),
+    fullName: joi.string(),
+    position: joi.string(),
+    isLicense: joi.boolean(),
+    id: joi.string()
   });
   return schema.validate(software);
 }

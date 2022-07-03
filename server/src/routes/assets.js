@@ -4,7 +4,7 @@ import { Hardware, validate as HwValidate } from "../models/hardware.js";
 import auth from "../middleware/generalAuth.js";
 const router = Router();
 
-(async function(){
+/*(async function(){
     let sw = new Software({
       name: "PowerPoint 2020",
       serialNumber: 87654321,
@@ -38,7 +38,7 @@ const router = Router();
       ip: 16502978426164785,
     });
     await hw.save();
-})();
+})();*/
 
 router.get("/", /*auth, */async (_req, res) => {
     const software = await Software.find({}, { __v: 0, "currentUser._id": 0 });
@@ -51,17 +51,17 @@ router.post("/", /*auth, */async (req, res) => {
     if (req.body.type == "hw") {
       const { error } = HwValidate(req.body);
       if (error) return res.status(400).send(error.details[0].message);
-      const hardware = new Hardware({
+      let hardware = new Hardware({
         name: req.body.name,
         serialNumber: req.body.serialNumber,
         propertyNumber: req.body.propertyNumber,
         description: req.body.description,
-        type: req.body.type,
+        type: req.body.assetType,
         installationDate: req.body.installationDate,
         location: req.body.location,
         manufacturer: req.body.manufacturer,
         currentUser: {
-          fullname: req.body.fullname,
+          fullName: req.body.fullName,
           position: req.body.position,
         },
         ip: req.body.ip,
@@ -72,7 +72,7 @@ router.post("/", /*auth, */async (req, res) => {
     if (req.body.type == "sw") {
       const { error } = SwValidate(req.body);
       if (error) return res.status(400).send(error.details[0].message);
-      const software = new Software({
+      let software = new Software({
         name: req.body.name,
         serialNumber: req.body.serialNumber,
         location: req.body.location,
@@ -80,10 +80,10 @@ router.post("/", /*auth, */async (req, res) => {
         installationDate: req.body.installationDate,
         description: req.body.description,
         lastUpdate: req.body.lastUpdate,
-        type: req.body.type,
+        type: req.body.assetType,
         isLicense: req.body.isLicense,
         currentUser: {
-          fullname: req.body.fullname,
+          fullName: req.body.fullName,
           position: req.body.position,
         },
       });
@@ -107,9 +107,9 @@ router.put("/", /*auth, */async (req, res) => {
           description: req.body.description,
           lastUpdate: req.body.lastUpdate,
           isLicense: req.body.isLicense,
-          type: req.body.type,
+          type: req.body.assetType,
           currentUser: {
-            fullname: req.body.currentUser,
+            fullName: req.body.fullName,
             position: req.body.position,
           },
         },
@@ -130,10 +130,10 @@ router.put("/", /*auth, */async (req, res) => {
           manufacturer: req.body.manufacturer,
           propertyNumber: req.body.propertyNumber,
           description: req.body.description,
-          type: req.body.type,
+          type: req.body.assetType,
           installationDate: req.body.installationDate,
           currentUser: {
-            fullname: req.body.currentUser,
+            fullName: req.body.fullName,
             position: req.body.position,
           },
           ip: req.body.ip,

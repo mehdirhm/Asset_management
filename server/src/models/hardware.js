@@ -48,15 +48,19 @@ const Hardware = mongoose.model('hardware', hardwareSchema);
 //creat HW inputs validator
 function validateHardware(hardware) {
   const schema = joi.object({
+    type: joi.string().required(),
     name: joi.string().min(2).max(50).required(),
     serialNumber: joi.number().required(),
     propertyNumber: joi.number().required(),
     description: joi.string().min(5),
-    type: joi.string().required(),
+    assetType: joi.string().required(),
     ip: joi.number(),
     installationDate: joi.date(),
     location: joi.string().required(),
     manufacturer: joi.string(),
+    fullName: joi.string(),
+    position: joi.string(),
+    id: joi.string()
   });
   return schema.validate(hardware);
 }
