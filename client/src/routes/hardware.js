@@ -131,8 +131,9 @@ export default function Hardware() {
   const processRowUpdate = React.useCallback(
     (newRow, oldRow) =>
       new Promise((resolve, reject) => {
+        console.log(newRow)
         axios.put("http://localhost:3030/assets", {
-          data: { ...newRow, type: "hw" },
+          data: { ...newRow, type: "hw"  },
         });
       }),
     []
@@ -318,20 +319,20 @@ processRowUpdate={processRowUpdate}
             loading={loading}
             rows={hw}
             columns={[
-              { field: "name", headerName: "Name", width: 150 },
-              { field: "serialNumber", headerName: "Serial No", width: 150 },
-              { field: "location", headerName: "Location", width: 150 },
-              { field: "manufacturer", headerName: "Manufacturer", width: 150 },
-              { field: "propertyNumber", headerName: "property Number", width: 150 },
-              { field: "description", headerName: "Description", width: 150 },
-              { field: "installationDate", headerName: "installation Date", width: 150 },
-              { field: "position", headerName: "Position", width: 150 },
+              { field: "name", headerName: "Name", width: 150 , editable: true },
+              { field: "serialNumber", headerName: "Serial No", width: 150 , editable: true },
+              { field: "location", headerName: "Location", width: 150 , editable: true},
+              { field: "manufacturer", headerName: "Manufacturer", width: 150 , editable: true },
+              { field: "propertyNumber", headerName: "property Number", width: 150 , editable: true },
+              { field: "description", headerName: "Description", width: 150 , editable: true },
+              { field: "installationDate", headerName: "installation Date", width: 150 , editable: true },
+              { field: "position", headerName: "Position", width: 150,editable: true },
 
-              { field: "type", headerName: "type", width: 150 },
-              { field: "currentUser", headerName: "current User", width: 150 },
+              { field: "type", headerName: "type", width: 150 , editable: true },
+              { field: "currentUser", headerName: "current User", width: 150 , editable: true },
 
 
-              { field: "ip", headerName: "IP", width: 150 },
+              { field: "ip", headerName: "IP", width: 150 , editable: true },
             ]}
             // keepNonExistentRowsSelected
           />
