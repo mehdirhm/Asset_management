@@ -42,7 +42,7 @@ const softwareSchema = new mongoose.Schema({
 
 const Software = mongoose.model('software', softwareSchema);
 
-//creat SW inputs validator
+//create SW inputs validator
 function validateSoftware(software) {
   const schema = joi.object({
     name: joi.string().min(2).max(50).required(),

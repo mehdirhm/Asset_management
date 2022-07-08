@@ -33,7 +33,7 @@ router.post('/',/*auth ,*/async (req, res) => {
   //saving the new user in DB
   await user.save();
 
-  //creat a token and sending it back to the client
+  //create a token and sending it back to the client
   res.send('user created successfully');
 });
 

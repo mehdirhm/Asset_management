@@ -31,12 +31,12 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.methods.generateAuthToken = function() { 
-  const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin, name: this.fullname }, config.get('jwtPrivateKey'));
+  const token = jwt.sign({ _id: this._id }, config.get('jwtPrivateKey'), {expiresIn: '1h'});
   return token;
 }
 const User = mongoose.model('User', userSchema);
 
-//creat registration inputs validator
+//create registration inputs validator
 function validateUser(user) {
   const schema = joi.object({
     fullname: joi.string().min(5).max(50).required(),

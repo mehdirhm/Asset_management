@@ -19,22 +19,14 @@ router.post('/', async (req, res) => {
   const validPassword = await compare(req.body.password, user.password);
   if (!validPassword) return res.status(400).send('Invalid username or password.');
 
-  //creat token and return it to user
-  // var myHeaders = new Headers();
+  //create token and return it to user
   const token = user.generateAuthToken();
-  // myHeaders.append('x-auth-token',token);
-  // console.log(typeof(token));
-  // res.writeHead(200 , {
-  //   'x-auth-token':"token",
-  // }).send();
-  res.header("Access-Control-Expose-Headers", "*");   // for acces to content of header that set in other side of application
+  // for access to content of header that set in other side of application
+  res.header("Access-Control-Expose-Headers", "*");   
   res.header("x-auth-token", token).send();
-  
-  // res.send();
-  // res.writeHead(200, {'x-auth-token': token}).send();
 });
 
-//creat login inputs validator
+//create login inputs validator
 function validate(req) {
   const schema = joi.object({
     username: joi.string().min(5).max(255).required(),

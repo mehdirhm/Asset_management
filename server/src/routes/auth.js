@@ -1,10 +1,9 @@
 import _ from 'lodash';
 import { Router } from 'express';
-import auth from '../middleware/generalAuth.js';
+import auth from '../middleware/adminAuth.js';
 const router = Router();
 
-router.get('/',/*auth*/  (req, res) => {
-    // console.log("sss"); 
+router.get('/',auth,  (req, res) => {
     res.send("access allowed");
 });
 

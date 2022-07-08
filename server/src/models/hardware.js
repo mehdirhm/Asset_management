@@ -45,7 +45,7 @@ const hardwareSchema = new mongoose.Schema({
 
 const Hardware = mongoose.model('hardware', hardwareSchema);
 
-//creat HW inputs validator
+//create HW inputs validator
 function validateHardware(hardware) {
   const schema = joi.object({
     type: joi.string().required(),
