@@ -48,43 +48,45 @@ router.get("/", /*auth, */async (_req, res) => {
 );
 
 router.post("/", /*auth, */async (req, res) => {
-    if (req.body.type == "hw") {
-      const { error } = HwValidate(req.body);
+    console.log(req.body.data);
+    if (req.body.data.type == "hw") {
+      const { error } = HwValidate(req.body.data);
       if (error) return res.status(400).send(error.details[0].message);
       let hardware = new Hardware({
-        name: req.body.name,
-        serialNumber: req.body.serialNumber,
-        propertyNumber: req.body.propertyNumber,
-        description: req.body.description,
-        type: req.body.assetType,
-        installationDate: req.body.installationDate,
-        location: req.body.location,
-        manufacturer: req.body.manufacturer,
+        name: req.body.data.name,
+        serialNumber: req.body.data.serialNumber,
+        propertyNumber: req.body.data.propertyNumber,
+        description: req.body.data.description,
+        type: req.body.data.assetType,
+        installationDate: req.body.data.installationDate,
+        location: req.body.data.location,
+        manufacturer: req.body.data.manufacturer,
         currentUser: {
-          fullName: req.body.fullName,
-          position: req.body.position,
+          fullName: req.body.data.fullName,
+          position: req.body.data.position,
         },
-        ip: req.body.ip,
+        ip: req.body.data.ip,
       });
       hardware = await hardware.save();
       res.send(hardware);
     }
-    if (req.body.type == "sw") {
-      const { error } = SwValidate(req.body);
+    if (req.body.data.type == "sw") {
+      const { error } = SwValidate(req.body.data);
+      console.log(error.details[0].message);
       if (error) return res.status(400).send(error.details[0].message);
       let software = new Software({
-        name: req.body.name,
-        serialNumber: req.body.serialNumber,
-        location: req.body.location,
-        manufacturer: req.body.manufacturer,
-        installationDate: req.body.installationDate,
-        description: req.body.description,
-        lastUpdate: req.body.lastUpdate,
-        type: req.body.assetType,
-        isLicense: req.body.isLicense,
+        name: req.body.data.name,
+        serialNumber: req.body.data.serialNumber,
+        location: req.body.data.location,
+        manufacturer: req.body.data.manufacturer,
+        installationDate: req.body.data.installationDate,
+        description: req.body.data.description,
+        lastUpdate: req.body.data.lastUpdate,
+        type: req.body.data.assetType,
+        isLicense: req.body.data.isLicense,
         currentUser: {
-          fullName: req.body.fullName,
-          position: req.body.position,
+          fullName: req.body.data.fullName,
+          position: req.body.data.position,
         },
       });
       software = await software.save();
@@ -155,7 +157,7 @@ router.delete("/", /*auth, */async (req, res) => {
         res.send(hw);
     }
     if(req.body.type=='sw'){
-        const sw = await Hardware.findByIdAndRemove(req.body.id);
+        const sw = await Software.findByIdAndRemove(req.body.id);
         if (!sw) return res.status(404).send('The software with the given ID was not found.');
         res.send(sw);
     }
