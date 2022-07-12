@@ -149,11 +149,29 @@ export default function AddAssets() {
         }
 
       }
+      console.log(newAsset());
 
       axios.post('http://localhost:3030/assets', {
       data: newAsset()
       
+    }).then((res) => {
+
+      if(res.status !== 200){
+        console.log(res.data)
+        // localStorage.setItem('token',res.headers['x-auth-token'])
+        // window.location.href = "http://localhost:3000/dashboard";
+
+      }
+      // alert(res.data);
+      
+
+    })
+    .catch(err => {
+     alert(err.response.data);
     });
+    
+    
+    ;
       console.log(newAsset());
 
     };
@@ -171,7 +189,7 @@ export default function AddAssets() {
       sx={{
         marginTop: 10,
         marginLeft: 5,
-        width: 1300,
+        width:1000,
         height: 300,
         '& .MuiTextField-root': { m: 1, width: '25ch' },
         '& > :not(style)': { m: 1 },
@@ -189,12 +207,14 @@ export default function AddAssets() {
         />
         
         <TextField
+          required
           id="outlined-password-input"
           label="Serial Number"
           onChange={handleChangeSerialNumber}
           autoComplete="current-password"
         />
         <TextField
+        required
           id="outlined-required"
           label="Asset Type"
           onChange={handleChangeAssetType}
@@ -202,6 +222,7 @@ export default function AddAssets() {
           
         />
         <TextField
+        required
           id="outlined-select-currency"
           select
           label="Select"
@@ -217,7 +238,7 @@ export default function AddAssets() {
         </TextField>
 
 <TextField
-          required
+          
           id="outlined-required"
           label="Last Update"
           onChange={handleChangeLastUpdate}
@@ -226,7 +247,7 @@ export default function AddAssets() {
 
 <TextField
             focused
-          required
+          
           label="Installation Date"
           onChange={handleChangeInstallationDate}
           type="date"
@@ -242,7 +263,7 @@ export default function AddAssets() {
           
         />  
         <TextField
-          required
+          
           id="outlined-required"
           label="Manufacturer"
           onChange={handleChangeManufacturer}
@@ -250,7 +271,7 @@ export default function AddAssets() {
         />  
 
 <TextField
-          required
+          
           id="outlined-required"
           label="Description"
           onChange={handleChangeDescription}
@@ -258,17 +279,17 @@ export default function AddAssets() {
         />  
 
 <TextField
-          required
+          
           id="outlined-required"
-          label="Full Name"
+          label="Current User Full Name"
           onChange={handleChangeFullName}
           defaultValue="Hello World"
         />
 
 <TextField
-          required
+          
           id="outlined-required"
-          label="Position"
+          label="Current User Position"
           onChange={handleChangePosition}
           defaultValue="Hello World"
         />
@@ -293,7 +314,7 @@ export default function AddAssets() {
         
         
       </div>
-      <Stack  >
+      <Stack  width="200px"  >
       <Button
       onClick = {handleSubmit}
         
