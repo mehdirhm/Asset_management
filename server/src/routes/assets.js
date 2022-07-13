@@ -96,60 +96,51 @@ router.post("/", /*auth, */async (req, res) => {
 );
 
 router.put("/", /*auth, */async (req, res) => {
-  // req.body = req.body.data;
-  console.log(req.body);
     if (req.body.data.type == "sw") {
-      const { error } = SwValidate(req.body);
-      
+      const { error } = SwValidate(req.body.data);
       if (error) return res.status(400).send(error.details[0].message);
-      
-      const sw = await Software.findByIdAndUpdate(req.body.id, 
+      const sw = await Software.findByIdAndUpdate(req.body.data.id, 
         {
-          name: req.body.name,
-          serialNumber: req.body.serialNumber,
-          location: req.body.location,
-          manufacturer: req.body.manufacturer,
-          installationDate: req.body.installationDate,
-          description: req.body.description,
-          lastUpdate: req.body.lastUpdate,
-          isLicense: req.body.isLicense,
-          type: req.body.assetType,
+          name: req.body.data.name,
+          serialNumber: req.body.data.serialNumber,
+          location: req.body.data.location,
+          manufacturer: req.body.data.manufacturer,
+          installationDate: req.body.data.installationDate,
+          description: req.body.data.description,
+          lastUpdate: req.body.data.lastUpdate,
+          isLicense: req.body.data.isLicense,
+          type: req.body.data.assetType,
           currentUser: {
-            fullName: req.body.fullName,
-            position: req.body.position,
+            fullName: req.body.data.fullName,
+            position: req.body.data.position,
           },
         },
         { new: true }
       );
-
       if (!sw) return res.status(404).send("The software with the given ID was not found.");
       res.send(sw);
     }
-    console.log(req.body.type);
     if (req.body.data.type == "hw") {
-      
-      const { error } = HwValidate(req.body);
-      console.log(error.details[0].message)
+      const { error } = HwValidate(req.body.data);
       if (error) return res.status(400).send(error.details[0].message);
-      const hw = await Hardware.findByIdAndUpdate(req.body.id,
+      const hw = await Hardware.findByIdAndUpdate(req.body.data.id,
         {
-          name: req.body.name,
-          serialNumber: req.body.serialNumber,
-          location: req.body.location,
-          manufacturer: req.body.manufacturer,
-          propertyNumber: req.body.propertyNumber,
-          description: req.body.description,
-          type: req.body.assetType,
-          installationDate: req.body.installationDate,
+          name: req.body.data.name,
+          serialNumber: req.body.data.serialNumber,
+          location: req.body.data.location,
+          manufacturer: req.body.data.manufacturer,
+          propertyNumber: req.body.data.propertyNumber,
+          description: req.body.data.description,
+          type: req.body.data.assetType,
+          installationDate: req.body.data.installationDate,
           currentUser: {
-            fullName: req.body.fullName,
-            position: req.body.position,
+            fullName: req.body.data.fullName,
+            position: req.body.data.position,
           },
-          ip: req.body.ip,
+          ip: req.body.data.ip,
         },
         { new: true }
       );
-
       if (!hw) return res.status(404).send("The software with the given ID was not found.");
       res.send(hw);
     }
@@ -158,7 +149,7 @@ router.put("/", /*auth, */async (req, res) => {
 );
 
 router.delete("/", /*auth, */async (req, res) => {
-    if(req.body.type=='hw'){
+    /*if(req.body.type=='hw'){
         const hw = await Hardware.findByIdAndRemove(req.body.id);
         if (!hw) return res.status(404).send('The hardware with the given ID was not found.');
         res.send(hw);
@@ -167,7 +158,8 @@ router.delete("/", /*auth, */async (req, res) => {
         const sw = await Software.findByIdAndRemove(req.body.id);
         if (!sw) return res.status(404).send('The software with the given ID was not found.');
         res.send(sw);
-    }
+    }*/
+    console.log(req.body);
   }
 );
 
