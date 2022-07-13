@@ -209,9 +209,7 @@ export default function Assets() {
             <Button onClick={onDelete_1} variant="outlined" color="error">
               Delete
             </Button>
-            <Button variant="contained" color="success">
-              Add
-            </Button>
+            
           </Stack>
 
           <h1>Software</h1>
@@ -249,9 +247,7 @@ export default function Assets() {
             <Button onClick={onDelete_2} variant="outlined" color="error">
               Delete
             </Button>
-            <Button variant="contained" color="success">
-              Add
-            </Button>
+           
           </Stack>
         </div>
       </>

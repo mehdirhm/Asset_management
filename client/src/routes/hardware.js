@@ -137,7 +137,7 @@ export default function Hardware() {
         });
       }),
     []
-  );
+  )
 
   let hw = [];
   let sw = [];
@@ -240,10 +240,12 @@ export default function Hardware() {
         location: item.location,
         manufacturer: item.manufacturer,
         ip: item.ip,
-        // currentUser: item.currentUser.fullName,
+        assetType: item.type,
+        fullName: item.currentUser.fullName,
+        position: item.currentUser.position,
         // currentUser: item.currentUser.fullName,
         installationDate: item.installationDate,
-        type: item.type,
+        // type: item.type,
         description: item.description,
         propertyNumber: item.propertyNumber,
       });
@@ -328,8 +330,9 @@ processRowUpdate={processRowUpdate}
               { field: "installationDate", headerName: "installation Date", width: 150 , editable: true },
               { field: "position", headerName: "Position", width: 150,editable: true },
 
-              { field: "type", headerName: "type", width: 150 , editable: true },
-              { field: "currentUser", headerName: "current User", width: 150 , editable: true },
+              // { field: "type", headerName: "type", width: 150 , editable: true },
+              { field: "fullName", headerName: "current User Full Name", width: 150 , editable: true },
+              { field: "assetType", headerName: "Asset Type", width: 150 , editable: true },
 
 
               { field: "ip", headerName: "IP", width: 150 , editable: true },

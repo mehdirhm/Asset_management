@@ -96,9 +96,13 @@ router.post("/", /*auth, */async (req, res) => {
 );
 
 router.put("/", /*auth, */async (req, res) => {
-    if (req.body.type == "sw") {
+  // req.body = req.body.data;
+  console.log(req.body);
+    if (req.body.data.type == "sw") {
       const { error } = SwValidate(req.body);
+      
       if (error) return res.status(400).send(error.details[0].message);
+      
       const sw = await Software.findByIdAndUpdate(req.body.id, 
         {
           name: req.body.name,
@@ -121,8 +125,11 @@ router.put("/", /*auth, */async (req, res) => {
       if (!sw) return res.status(404).send("The software with the given ID was not found.");
       res.send(sw);
     }
-    if (req.body.type == "hw") {
+    console.log(req.body.type);
+    if (req.body.data.type == "hw") {
+      
       const { error } = HwValidate(req.body);
+      console.log(error.details[0].message)
       if (error) return res.status(400).send(error.details[0].message);
       const hw = await Hardware.findByIdAndUpdate(req.body.id,
         {

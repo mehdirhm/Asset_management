@@ -48,6 +48,11 @@ export default function AddAssets() {
     const [isLicense, setIsLicense] = React.useState(false);
     const [manufacturer, setManufacturer] = React.useState('');
     const [type, setType] = React.useState('sw');
+    const [ip, setIp] = React.useState('');
+    const [propertyNumber, setPropertyNumber] = React.useState('');
+
+    const [isHardware, setIsHardware] = React.useState(false);
+
     
     
 
@@ -66,6 +71,16 @@ export default function AddAssets() {
 
     };
 
+    const handlePropertyNumber = (event) => {
+      setPropertyNumber(event.target.value);
+      // console.log(name);
+
+    };
+    const handleIp = (event) => {
+      setIp(event.target.value);
+      // console.log(name);
+
+    };
     const handleChangeSerialNumber = (event) => {
       setSerialNumber(event.target.value);
       // console.log(serialNumber);
@@ -121,6 +136,16 @@ export default function AddAssets() {
 
     const handleChangeType = (event) => {
       setType(event.target.value);
+      if(event.target.value == "hw"){
+        setIsHardware(true);
+
+      }
+
+      if(event.target.value == "sw"){
+        setIsHardware(false);
+
+      }
+      
       // console.log(name);
 
     };
@@ -134,7 +159,24 @@ export default function AddAssets() {
       const newAsset = () => {
 
 
+        if(type == "hw"){
+          return {
+            type,
+            name,
+            serialNumber,
+            description,
+            assetType,
+            ip,
+            propertyNumber,
+            installationDate,
+            location,
+            position,
+            fullName,
+            
+            manufacturer
+          }
 
+        }
 
         return {
           type,
@@ -153,7 +195,7 @@ export default function AddAssets() {
 
       }
      let data =  newAsset();
-      Object.keys(data).forEach((k) => data[k] == "" && delete data[k]);
+      Object.keys(data).forEach((k) => data[k] === "" && delete data[k]);
       axios.post('http://localhost:3030/assets', {
       data: data
       
@@ -182,6 +224,171 @@ export default function AddAssets() {
 
     };
 
+if(isHardware){
+  return (
+    <>
+      <DashboardLayout></DashboardLayout>
+
+     
+  
+
+
+      <Box
+      component="form"
+      sx={{
+        marginTop: 10,
+        marginLeft: 5,
+        width:1000,
+        height: 300,
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+        '& > :not(style)': { m: 1 },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <div>
+        <TextField
+          required
+          id="outlined-required"
+          label="Name"
+          onChange={handleChangeName}
+          defaultValue=""
+        />
+        
+        <TextField
+          required
+          id="outlined-password-input"
+          label="Serial Number"
+          onChange={handleChangeSerialNumber}
+          autoComplete="current-password"
+          defaultValue=""
+        />
+        
+
+        
+        <TextField
+        required
+          id="outlined-required"
+          label="Asset Type"
+          onChange={handleChangeAssetType}
+          defaultValue=""
+         
+          
+        />
+        <TextField
+        required
+          id="outlined-select-currency"
+          select
+          label="Select"
+          value={type}
+          onChange={handleChangeType}
+          defaultValue=""
+          helperText="Please select your Type"
+        >
+          {types.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+
+
+        <TextField
+          required
+          id="outlined-password-input"
+          label="Property Number"
+          onChange={handlePropertyNumber}
+          autoComplete="current-password"
+          defaultValue=""
+        />
+
+{/* <TextField
+          
+          id="outlined-required"
+          label="Last Update"
+          onChange={handleChangeLastUpdate}
+          type="date"
+          focused        /> */}
+
+<TextField
+            focused
+          
+          label="Installation Date"
+          onChange={handleChangeInstallationDate}
+          type="date"
+          
+        />
+
+
+        
+
+<TextField
+          required
+          id="outlined-required"
+          onChange={handleChangeLocation}
+          label="Location"
+          
+        />  
+        <TextField
+          
+          id="outlined-required"
+          label="Manufacturer"
+          onChange={handleChangeManufacturer}
+          defaultValue=""
+        />  
+
+<TextField
+          
+          id="outlined-required"
+          label="Description"
+          onChange={handleChangeDescription}
+          defaultValue=""
+        />  
+
+<TextField
+          
+          id="outlined-required"
+          label="Current User Full Name"
+          onChange={handleChangeFullName}
+          defaultValue=""
+        />
+
+<TextField
+          
+          id="outlined-required"
+          label="Current User Position"
+          onChange={handleChangePosition}
+          defaultValue=""
+        />
+
+
+
+        <TextField
+          
+          id="outlined-password-input"
+          label="IP"
+          onChange={handleIp}
+          autoComplete="current-password"
+          defaultValue=""
+        />
+        
+        
+      </div>
+      <Stack  width="200px"  >
+      <Button
+      onClick = {handleSubmit}
+        
+        
+       variant="contained" color="success">
+        Save
+      </Button>
+      </Stack>
+    </Box>
+    </>
+  );
+
+}
+else{
   return (
     <>
       <DashboardLayout></DashboardLayout>
@@ -332,4 +539,7 @@ export default function AddAssets() {
     </Box>
     </>
   );
+}
+    
+  
 }
