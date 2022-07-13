@@ -45,7 +45,7 @@ export default function AddAssets() {
     const [location, setLocation] = React.useState('');
     const [position, setPosition] = React.useState('');
     const [fullName, setFullName] = React.useState(''); 
-    const [isLicence, setIsLicence] = React.useState(false);
+    const [isLicense, setIsLicense] = React.useState(false);
     const [manufacturer, setManufacturer] = React.useState('');
     const [type, setType] = React.useState('sw');
     
@@ -113,8 +113,8 @@ export default function AddAssets() {
 
     };
 
-    const handleChangeIsLicence = (event) => {
-      setIsLicence(event.target.value);
+    const handleChangeIsLicense = (event) => {
+      setIsLicense(event.target.value);
       // console.log(name);
 
     };
@@ -127,7 +127,10 @@ export default function AddAssets() {
     const handleSubmit = (event) => {
       // setIsLicence(event.target.value);
       // console.log("name");
-
+      // if (name === '' || serialNumber === '' || assetType === '' || lastUpdate === '' || installationDate === '' || location === '' || position === '' || manufacturer === '' || description === '' || fullName === '') {
+      //   alert("Please fill all the fields");
+      // }
+      // else {}
       const newAsset = () => {
 
 
@@ -144,15 +147,15 @@ export default function AddAssets() {
           location,
           position,
           fullName,
-          isLicence,
+          isLicense,
           manufacturer
         }
 
       }
-      console.log(newAsset());
-
+     let data =  newAsset();
+      Object.keys(data).forEach((k) => data[k] == "" && delete data[k]);
       axios.post('http://localhost:3030/assets', {
-      data: newAsset()
+      data: data
       
     }).then((res) => {
 
@@ -167,7 +170,10 @@ export default function AddAssets() {
 
     })
     .catch(err => {
-     alert(err.response.data);
+      if(err.response.data){
+        alert(err.response.data);
+      }
+     
     });
     
     
@@ -203,7 +209,7 @@ export default function AddAssets() {
           id="outlined-required"
           label="Name"
           onChange={handleChangeName}
-          defaultValue="Hello World"
+          // defaultValue="Hello World"
         />
         
         <TextField
@@ -267,7 +273,7 @@ export default function AddAssets() {
           id="outlined-required"
           label="Manufacturer"
           onChange={handleChangeManufacturer}
-          defaultValue=""
+          // defaultValue=""
         />  
 
 <TextField
@@ -275,7 +281,7 @@ export default function AddAssets() {
           id="outlined-required"
           label="Description"
           onChange={handleChangeDescription}
-          defaultValue=""
+          // defaultValue=""
         />  
 
 <TextField
@@ -283,7 +289,7 @@ export default function AddAssets() {
           id="outlined-required"
           label="Current User Full Name"
           onChange={handleChangeFullName}
-          defaultValue="Hello World"
+          // defaultValue="Hello World"
         />
 
 <TextField
@@ -291,7 +297,7 @@ export default function AddAssets() {
           id="outlined-required"
           label="Current User Position"
           onChange={handleChangePosition}
-          defaultValue="Hello World"
+          // defaultValue="Hello World"
         />
 
 
@@ -301,8 +307,8 @@ export default function AddAssets() {
           id="outlined-select-currency"
           select
           label="Is License"
-          value={isLicence}
-          onChange={handleChangeIsLicence}
+          value={isLicense}
+          onChange={handleChangeIsLicense}
           helperText="Please select"
         >
           {licenses.map((option) => (

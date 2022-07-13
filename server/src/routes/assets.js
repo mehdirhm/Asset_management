@@ -72,7 +72,7 @@ router.post("/", /*auth, */async (req, res) => {
     }
     if (req.body.data.type == "sw") {
       const { error } = SwValidate(req.body.data);
-      console.log(error.details[0].message);
+      // console.log(error.details[0].message);
       if (error) return res.status(400).send(error.details[0].message);
       let software = new Software({
         name: req.body.data.name,
