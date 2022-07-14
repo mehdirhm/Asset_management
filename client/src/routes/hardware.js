@@ -343,9 +343,9 @@ processRowUpdate={processRowUpdate}
             <Button onClick={onDelete_1} variant="outlined" color="error">
               Delete
             </Button>
-            <Button variant="contained" color="success">
+            {/* <Button variant="contained" color="success">
               Add
-            </Button>
+            </Button> */}
           </Stack>
         </div>
       </>

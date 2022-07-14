@@ -327,6 +327,7 @@ if(isHardware){
           id="outlined-required"
           onChange={handleChangeLocation}
           label="Location"
+          defaultValue=""
           
         />  
         <TextField

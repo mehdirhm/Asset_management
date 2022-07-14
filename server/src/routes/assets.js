@@ -149,7 +149,7 @@ router.put("/", /*auth, */async (req, res) => {
 );
 
 router.delete("/", /*auth, */async (req, res) => {
-    /*if(req.body.type=='hw'){
+    if(req.body.type=='hw'){
         const hw = await Hardware.findByIdAndRemove(req.body.id);
         if (!hw) return res.status(404).send('The hardware with the given ID was not found.');
         res.send(hw);
@@ -158,8 +158,8 @@ router.delete("/", /*auth, */async (req, res) => {
         const sw = await Software.findByIdAndRemove(req.body.id);
         if (!sw) return res.status(404).send('The software with the given ID was not found.');
         res.send(sw);
-    }*/
-    console.log(req.body);
+    }
+    // console.log(req.body);
   }
 );
 
