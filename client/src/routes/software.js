@@ -188,12 +188,16 @@ export default function Software() {
     axios.delete("http://localhost:3030/assets", {
       data: {
         type: "sw",
-        id: selectionModel,
+        id: selectionModelSw,
       },
     });
     // console.log(rows)
     // setSelectionModel([]);
   };
+
+
+
+  
 
   useEffect(() => {
     let active = true;

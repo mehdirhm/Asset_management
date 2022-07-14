@@ -118,7 +118,7 @@ router.put("/", /*auth, */async (req, res) => {
         { new: true }
       );
       if (!sw) return res.status(404).send("The software with the given ID was not found.");
-      res.send(sw);
+      return res.send(sw);
     }
     if (req.body.data.type == "hw") {
       const { error } = HwValidate(req.body.data);
@@ -142,7 +142,7 @@ router.put("/", /*auth, */async (req, res) => {
         { new: true }
       );
       if (!hw) return res.status(404).send("The software with the given ID was not found.");
-      res.send(hw);
+      return res.send(hw);
     }
     res.send("please send the asset type!!!");
   }
