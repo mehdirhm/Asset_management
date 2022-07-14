@@ -258,7 +258,7 @@ export default function Software() {
         description: item.description,
         isLicense: item.isLicense,
         lastUpdate: item.lastUpdate,
-        position: item.position,
+        position: item.currentUser.position,
         type: item.type,
       });
     });
@@ -345,9 +345,9 @@ export default function Software() {
             <Button onClick={onDelete_2} variant="outlined" color="error">
               Delete
             </Button>
-            <Button variant="contained" color="success">
+            {/* <Button variant="contained" color="success">
               Add
-            </Button>
+            </Button> */}
           </Stack>
         </div>
       </>

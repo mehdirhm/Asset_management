@@ -206,9 +206,9 @@ export default function Assets() {
             // keepNonExistentRowsSelected
           />
           <Stack style={{ marginBottom: 100 }} direction="row" spacing={2}>
-            <Button onClick={onDelete_1} variant="outlined" color="error">
+            {/* <Button onClick={onDelete_1} variant="outlined" color="error">
               Delete
-            </Button>
+            </Button> */}
             
           </Stack>
 
@@ -244,9 +244,9 @@ export default function Assets() {
           />
 
           <Stack style={{ marginBottom: 100 }} direction="row" spacing={2}>
-            <Button onClick={onDelete_2} variant="outlined" color="error">
+            {/* <Button onClick={onDelete_2} variant="outlined" color="error">
               Delete
-            </Button>
+            </Button> */}
            
           </Stack>
         </div>
