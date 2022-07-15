@@ -178,6 +178,8 @@ export default function AddAssets() {
 
         }
 
+
+
         return {
           type,
           name,
@@ -202,7 +204,7 @@ export default function AddAssets() {
     }).then((res) => {
 
       if(res.status !== 200){
-        console.log(res.data)
+        // console.log(res.data)
         // localStorage.setItem('token',res.headers['x-auth-token'])
         // window.location.href = "http://localhost:3000/dashboard";
 
@@ -351,7 +353,7 @@ if(isHardware){
           id="outlined-required"
           label="Current User Full Name"
           onChange={handleChangeFullName}
-          defaultValue=" "
+          defaultValue=""
         />
 
 <TextField
@@ -497,7 +499,7 @@ else{
           id="outlined-required"
           label="Current User Full Name"
           onChange={handleChangeFullName}
-          defaultValue=" "
+          defaultValue=""
         />
 
 <TextField
@@ -505,7 +507,7 @@ else{
           id="outlined-required"
           label="Current User Position"
           onChange={handleChangePosition}
-          defaultValue=" "
+          defaultValue=""
         />
 
 
