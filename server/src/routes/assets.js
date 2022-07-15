@@ -41,8 +41,8 @@ const router = Router();
 })();*/
 
 router.get("/", /*auth, */async (_req, res) => {
-    const software = await Software.find({}, { __v: 0, "currentUser._id": 0 });
-    const hardware = await Hardware.find({}, { __v: 0, "currentUser._id": 0 });
+    const software = await Software.find({}, { __v: 0});
+    const hardware = await Hardware.find({}, { __v: 0});
     res.send({ sw: software, hw: hardware });
   }
 );
