@@ -327,7 +327,7 @@ if(isHardware){
           id="outlined-required"
           onChange={handleChangeLocation}
           label="Location"
-          defaultValue=""
+          defaultValue=" "
           
         />  
         <TextField
@@ -335,7 +335,7 @@ if(isHardware){
           id="outlined-required"
           label="Manufacturer"
           onChange={handleChangeManufacturer}
-          defaultValue=""
+          defaultValue=" "
         />  
 
 <TextField
@@ -343,7 +343,7 @@ if(isHardware){
           id="outlined-required"
           label="Description"
           onChange={handleChangeDescription}
-          defaultValue=""
+          defaultValue=" "
         />  
 
 <TextField
@@ -351,7 +351,7 @@ if(isHardware){
           id="outlined-required"
           label="Current User Full Name"
           onChange={handleChangeFullName}
-          defaultValue=""
+          defaultValue=" "
         />
 
 <TextField
@@ -359,7 +359,7 @@ if(isHardware){
           id="outlined-required"
           label="Current User Position"
           onChange={handleChangePosition}
-          defaultValue=""
+          defaultValue=" "
         />
 
 
@@ -370,7 +370,7 @@ if(isHardware){
           label="IP"
           onChange={handleIp}
           autoComplete="current-password"
-          defaultValue=""
+          defaultValue=" "
         />
         
         
@@ -481,7 +481,7 @@ else{
           id="outlined-required"
           label="Manufacturer"
           onChange={handleChangeManufacturer}
-          defaultValue=""
+          defaultValue=" "
         />  
 
 <TextField
@@ -489,7 +489,7 @@ else{
           id="outlined-required"
           label="Description"
           onChange={handleChangeDescription}
-          defaultValue=""
+          defaultValue=" "
         />  
 
 <TextField
@@ -497,7 +497,7 @@ else{
           id="outlined-required"
           label="Current User Full Name"
           onChange={handleChangeFullName}
-          defaultValue=""
+          defaultValue=" "
         />
 
 <TextField
@@ -505,7 +505,7 @@ else{
           id="outlined-required"
           label="Current User Position"
           onChange={handleChangePosition}
-          defaultValue=""
+          defaultValue=" "
         />
 
 
