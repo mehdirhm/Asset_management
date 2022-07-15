@@ -252,7 +252,7 @@ if(isHardware){
           id="outlined-required"
           label="Name"
           onChange={handleChangeName}
-          defaultValue=""
+         
         />
         
         <TextField
@@ -261,7 +261,7 @@ if(isHardware){
           label="Serial Number"
           onChange={handleChangeSerialNumber}
           autoComplete="current-password"
-          defaultValue=""
+          
         />
         
 
@@ -271,7 +271,7 @@ if(isHardware){
           id="outlined-required"
           label="Asset Type"
           onChange={handleChangeAssetType}
-          defaultValue=""
+          
          
           
         />
@@ -282,7 +282,7 @@ if(isHardware){
           label="Select"
           value={type}
           onChange={handleChangeType}
-          defaultValue=""
+          
           helperText="Please select your Type"
         >
           {types.map((option) => (
@@ -299,7 +299,7 @@ if(isHardware){
           label="Property Number"
           onChange={handlePropertyNumber}
           autoComplete="current-password"
-          defaultValue=""
+          
         />
 
 {/* <TextField
@@ -481,7 +481,7 @@ else{
           id="outlined-required"
           label="Manufacturer"
           onChange={handleChangeManufacturer}
-          // defaultValue=""
+          defaultValue=""
         />  
 
 <TextField
@@ -489,7 +489,7 @@ else{
           id="outlined-required"
           label="Description"
           onChange={handleChangeDescription}
-          // defaultValue=""
+          defaultValue=""
         />  
 
 <TextField
@@ -497,7 +497,7 @@ else{
           id="outlined-required"
           label="Current User Full Name"
           onChange={handleChangeFullName}
-          // defaultValue="Hello World"
+          defaultValue=""
         />
 
 <TextField
@@ -505,7 +505,7 @@ else{
           id="outlined-required"
           label="Current User Position"
           onChange={handleChangePosition}
-          // defaultValue="Hello World"
+          defaultValue=""
         />
 
 
