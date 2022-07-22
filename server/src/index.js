@@ -3,6 +3,7 @@ import config from 'config';
 import login from './routes/login.js';
 import reguser from './routes/reguser.js';
 import assets from './routes/assets.js'
+import statistics from './routes/statistics.js'
 import auth from './routes/auth.js';
 import cors from 'cors';
 import mongoose from 'mongoose';
@@ -22,15 +23,13 @@ mongoose.connect('mongodb://localhost/asset_management')
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Could not connect to MongoDB...'));
 
-
-
-
 app.use(cors(corsOptions));
 app.use(Express.json());
 app.use('/login', login);
 app.use('/auth', auth);
 app.use('/reguser', reguser);
 app.use('/assets', assets);
+app.use('/statistics', statistics);
 
 const port = process.env.PORT || 3030;
 app.listen(port, () => console.log(`listening on port ${port}`));
