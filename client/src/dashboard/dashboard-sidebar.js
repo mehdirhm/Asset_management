@@ -55,20 +55,16 @@ const items = [
     icon: <ChartBarIcon fontSize="small" />,
     title: " نرم افزار ها",
   },
+  
   {
-    href: "/manage-users",
-    icon: <ChartBarIcon fontSize="small" />,
-    title: " مدیریت حساب ها",
-  },
-  {
-    href: "/add-user",
+    href: "/reguser",
     icon: <ChartBarIcon fontSize="small" />,
     title: " اضافه کردن کاربر",
   },
   {
-    href: "/reports",
+    href: "/exit",
     icon: <ChartBarIcon fontSize="small" />,
-    title: " گزارشات",
+    title: "خروج",
   },
 ];
 

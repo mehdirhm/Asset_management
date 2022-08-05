@@ -1,6 +1,6 @@
 import {Navigate , Outlet} from 'react-router';
 import {DashboardLayout} from '../dashboard/dashboard-layout'
-import Home from '../routes/home'
+import Login from '../login/login'
 
 
 import axios from 'axios';
@@ -55,7 +55,7 @@ const useAuth =  (props) => {
 
 const RequireAuth = () => {
     const isAuth = useAuth();
-    return !isAuth ? <Home/> : <DashboardLayout/>;
+    return !isAuth ? <Login/> : <DashboardLayout/>;
     // return !isAuth ? <Home/> : <Navigate to="/dashboard"  />;;
 }
 

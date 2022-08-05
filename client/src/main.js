@@ -17,7 +17,7 @@ import Assets from "./routes/assets";
 import AddAssets from "./routes/add-assets";
 import Hardware from "./routes/hardware";
 import Software from "./routes/software";
-
+import Exit from "./routes/exit";
 
 
 
@@ -26,13 +26,40 @@ export default function Main() {
     return (
         <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Home/>} />
+          <Route exact path="/" element={
+            <RequireAuth >
+              <Home/>
+
+            </RequireAuth>
+          } />
           <Route exact path="/login" element={<Login/>} />
           <Route exact path="/reguser" element={<Reg/>} />
-          <Route exact path="/assets" element={<Assets/>} />
-          <Route exact path="/add-asset" element={<AddAssets/>} />
-          <Route exact path="/hardware" element={<Hardware/>} />
-          <Route exact path="/software" element={<Software/>} />
+          <Route exact path="/assets" element={
+             <RequireAuth >
+              <Assets/>
+
+             </RequireAuth>
+          
+          } />
+          <Route exact path="/add-asset" element={
+            <RequireAuth >
+              <AddAssets/>
+            </RequireAuth>
+          
+          } />
+          <Route exact path="/hardware" element={
+          <RequireAuth >
+            <Hardware/>
+          </RequireAuth>} />
+          <Route exact path="/software" element={
+          <RequireAuth >
+            <Software/>
+          </RequireAuth>} />
+          <Route exact path="/exit" element={
+          
+              <Exit/>
+            
+          } />
           <Route exact path="/dashboard" element={
           <RequireAuth >
           <DashboardLayout />
