@@ -37,7 +37,7 @@ const router = Router();
       },
       ip: 16502978426164785,
     });
-    await hw.save();
+    await hw.save()
 })();*/
 
 router.get("/", /*auth, */async (_req, res) => {
