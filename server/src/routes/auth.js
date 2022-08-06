@@ -1,6 +1,5 @@
-import _ from 'lodash';
 import { Router } from 'express';
-import auth from '../middleware/adminAuth.js';
+import auth from '../middleware/generalAuth.js';
 const router = Router();
 
 router.get('/',auth,  (req, res) => {

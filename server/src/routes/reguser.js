@@ -6,7 +6,7 @@ import auth from '../middleware/adminAuth.js';
 const router = Router();
 
 //the post method of registering a new user
-router.post('/',/*auth ,*/async (req, res) => {
+router.post('/',auth ,async (req, res) => {
   const date = new Date();
 
   //validating the user inputs
@@ -37,7 +37,7 @@ router.post('/',/*auth ,*/async (req, res) => {
   res.send('user created successfully');
 });
 
-router.delete('/:id', /*auth,*/ async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
   const user = await User.findByIdAndRemove(req.params.id);
   if (!user) return res.status(404).send('The user with the given ID was not found.');
   res.send(user);
