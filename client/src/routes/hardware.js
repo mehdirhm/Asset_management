@@ -133,9 +133,31 @@ export default function Hardware() {
     (newRow, oldRow) =>
       new Promise((resolve, reject) => {
         console.log(newRow)
-        axios.put("http://localhost:3030/assets", {
-          data: { ...newRow, type: "hw"  },
-        });
+          axios.put("http://localhost:3030/assets", {
+            data: { ...newRow, type: "hw"  },
+            
+              headers:{
+
+                'x-auth-token' : localStorage.getItem('token')
+    
+            }
+
+            
+          })
+
+
+      //   axios({
+      //     method:"put",
+      //     url:"http://localhost:3030/assets",
+      //     data:{ ...newRow, type: "hw"  },
+      //     headers : {
+      //       'x-auth-token' : localStorage.getItem('token')
+      //     }
+          
+          
+          
+    
+      // })
       }),
     []
   )
@@ -169,7 +191,15 @@ export default function Hardware() {
       data: {
         type: "hw",
         id : selectionModel,
+      },
+      
+        headers:{
+
+          'x-auth-token' : localStorage.getItem('token')
+
       }
+
+      
       
     });
     // console.log(rows);

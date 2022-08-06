@@ -144,7 +144,14 @@ export default function Software() {
       new Promise((resolve, reject) => {
         console.log(newRow)
         axios.put('http://localhost:3030/assets', {
-            data: {...newRow , type:"sw"} 
+            data: {...newRow , type:"sw"} ,
+            headers:{
+
+              'x-auth-token' : localStorage.getItem('token')
+  
+          }
+
+          
             
           });
         
