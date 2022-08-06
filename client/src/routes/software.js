@@ -206,7 +206,14 @@ export default function Software() {
       setLoading(true);
       try {
         const { data: response } = await axios.get(
-          "http://localhost:3030/assets"
+          "http://localhost:3030/assets",{ 
+            headers:{
+
+              'x-auth-token' : localStorage.getItem('token')
+  
+          }
+
+          }
         );
         setData(response);
 

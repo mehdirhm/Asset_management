@@ -193,7 +193,14 @@ export default function Hardware() {
       setLoading(true);
       try {
         const { data: response } = await axios.get(
-          "http://localhost:3030/assets"
+          "http://localhost:3030/assets",{ 
+            headers:{
+
+              'x-auth-token' : localStorage.getItem('token')
+  
+          }
+
+          }
         );
         setData(response);
 
@@ -204,7 +211,7 @@ export default function Hardware() {
           return;
         }
       } catch (error) {
-        console.error(error.message);
+        console.error(error.response);
       }
 
       setLoading(false);
