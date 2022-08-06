@@ -145,15 +145,10 @@ export default function Software() {
         console.log(newRow)
         axios.put('http://localhost:3030/assets', {
             data: {...newRow , type:"sw"} ,
-            headers:{
 
-              'x-auth-token' : localStorage.getItem('token')
-  
-          }
-
-          
-            
-          });
+          },{ headers : {
+            'x-auth-token' : localStorage.getItem('token')
+          } }).then((res) => {}).catch((err) => console.log(err.response));
         
       }),
     [],
@@ -197,7 +192,9 @@ export default function Software() {
         type: "sw",
         id: selectionModelSw,
       },
-    });
+    }, { headers : {
+      'x-auth-token' : localStorage.getItem('token')
+    } });
     // console.log(rows)
     // setSelectionModel([]);
   };
