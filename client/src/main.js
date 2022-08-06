@@ -26,33 +26,37 @@ export default function Main() {
     return (
         <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={
-            <RequireAuth >
+          <Route exact path="/"   element={
+            <RequireAuth  p = {<Home/>}>
               <Home/>
 
             </RequireAuth>
           } />
           <Route exact path="/login" element={<Login/>} />
-          <Route exact path="/reguser" element={<Reg/>} />
+          <Route exact path="/reguser" element={
+            <RequireAuth  p = {<Reg/>}>
+               <Reg/> 
+               </RequireAuth>
+          } />
           <Route exact path="/assets" element={
-             <RequireAuth >
+             <RequireAuth p = {<Assets/>} >
               <Assets/>
 
              </RequireAuth>
           
           } />
           <Route exact path="/add-asset" element={
-            <RequireAuth >
+            <RequireAuth p={<AddAssets/>} >
               <AddAssets/>
             </RequireAuth>
           
           } />
           <Route exact path="/hardware" element={
-          <RequireAuth >
+          <RequireAuth p={<Hardware/>} >
             <Hardware/>
           </RequireAuth>} />
           <Route exact path="/software" element={
-          <RequireAuth >
+          <RequireAuth p={<Software/>} >
             <Software/>
           </RequireAuth>} />
           <Route exact path="/exit" element={
@@ -61,7 +65,7 @@ export default function Main() {
             
           } />
           <Route exact path="/dashboard" element={
-          <RequireAuth >
+          <RequireAuth p={<DashboardLayout/>} >
           <DashboardLayout />
         </RequireAuth>} />
 

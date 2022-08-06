@@ -30,7 +30,7 @@ const useAuth =  (props) => {
         
   
     }).then((res) => {
-        console.log("sss")
+        console.log(res.data);
 
         if(res.status === 200) {
             user.loggedIn = true;
@@ -38,6 +38,7 @@ const useAuth =  (props) => {
         }
 
     }).catch((err) => {
+        alert(err.response.data)
 
         user.loggedIn = false;
         return user.loggedIn
@@ -53,9 +54,10 @@ const useAuth =  (props) => {
     return user && user.loggedIn
 };
 
-const RequireAuth = () => {
+const RequireAuth = (props) => {
     const isAuth = useAuth();
-    return !isAuth ? <Login/> : <DashboardLayout/>;
+    console.log(props)
+    return !isAuth ? <Login/> : props.p;
     // return !isAuth ? <Home/> : <Navigate to="/dashboard"  />;;
 }
 
