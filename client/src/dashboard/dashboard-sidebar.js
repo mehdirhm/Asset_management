@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useState , useEffect } from "react";
 // import { Link } from "react-router-dom";
 // import { useRouter } from 'next/router'
+import * as React from "react";
+
 import {
   Box,
   Button,
@@ -28,7 +30,8 @@ import { NavItem } from "./nav-item";
 // import { WithNextRouter } from 'storybook-addon-next-router/dist/decorators';
 
 // export const decorators = [WithNextRouter];
-
+// const a = require('../login/login.jsx');
+// const b = require('../login/login.jsx');
 const items = [
   {
     href: "/",
@@ -71,6 +74,8 @@ const items = [
 export const DashboardSidebar = (props) => {
   const { open, onClose } = props;
   const { theme } = props;
+  const [name, setName] = useState([]);
+  const [admin, setAdmin] = useState([]);
   // const router = useRouter();
   // console.log(router);
 
@@ -84,6 +89,10 @@ export const DashboardSidebar = (props) => {
       onClose?.();
     }
   }, [useParams()]);
+  useEffect(() => {
+   setName(localStorage.getItem('name'));
+   setAdmin(localStorage.getItem('isAdmin'));
+  }, []);
 
   const content = (
     <>
@@ -130,7 +139,7 @@ export const DashboardSidebar = (props) => {
                   variant="subtitle1"
                   fontFamily="Vazir"
                 >
-                  مهدی رحیم سیرت
+                  {name}
                 </Typography>
                 <Typography
                   color="neutral.400"
@@ -138,7 +147,9 @@ export const DashboardSidebar = (props) => {
                   fontFamily="Vazir"
                 >
                   {" "}
-                  نوع دسترسی : مدیر
+
+
+                  {admin === 'true' ? 'مدیر' : 'کاربر'}
                 </Typography>
               </div>
             </Box>

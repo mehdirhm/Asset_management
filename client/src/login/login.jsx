@@ -61,11 +61,14 @@ class Login extends Component {
   
       .then((res) => {
         // var myHeaders = new Headers();
-        console.log(res.data);
-        console.log(res.status);
+        // a =  res.data.name
+        // b = res.data.isAdmin
+        // alert(res.data['name'])
         if(userIsLogin(res)) {
           localStorage.setItem('token',res.headers['x-auth-token'])
-          window.location.href = "http://localhost:3000/dashboard";
+          localStorage.setItem('name',res.data['name'])
+          localStorage.setItem('isAdmin',res.data['isAdmin'])
+          window.location.href = "http://localhost:3000/";
           auth.login( () => {
            
             // console.log(window.location)
@@ -88,7 +91,7 @@ class Login extends Component {
         
       })
       .catch(err => {
-      //  alert(err.response.data)
+       alert(err.response.data)
        
       });
 
@@ -100,16 +103,17 @@ class Login extends Component {
       <div className="wrapper">
         <form onSubmit={this.handleSubmit} method="POST" action="http://localhost:3030/"  className="form-signin">
           <h2 className="form-signin-heading">Please login</h2>
-          <input type="text" className="form-control" name="username" placeholder="Email Address" onChange={this.handleInputChange} required="" autoFocus=""/>
+          <input type="text" className="form-control" name="username" placeholder="User Name" onChange={this.handleInputChange} required="" autoFocus=""/>
           <input type="password" className="form-control" name="password" placeholder="Password" onChange={this.handleInputChange} required="" />
-          <label className="form-control" id="remember" >
+          {/* <label className="form-control" id="remember" >
             <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe" /> Remember Me
-          </label>
+          </label> */}
           <input type="submit" className="btn btn-lg btn-primary btn-block" value="Login" />
         </form>
       </div>
     );
   }
 }
-
+// module.exports = a ;
+// module.exports = b;
 export default Login;

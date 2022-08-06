@@ -62,8 +62,17 @@ export default function Assets() {
       setLoading(true);
       try {
         const { data: response } = await axios.get(
-          "http://localhost:3030/assets"
-        );
+          "http://localhost:3030/assets", { 
+            headers:{
+
+              'x-auth-token' : localStorage.getItem('token')
+  
+          }
+
+          }
+         
+        )
+        
         setData(response);
 
         setRows(response.hw);
@@ -73,7 +82,7 @@ export default function Assets() {
           return;
         }
       } catch (error) {
-        console.error(error.message);
+        console.log(error.response);
       }
 
       setLoading(false);

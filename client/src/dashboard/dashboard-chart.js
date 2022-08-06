@@ -13,14 +13,14 @@ export const DashboardChart = (props) => {
     const [da, setDa] = useState([]);
     const [loading, setLoading] = useState(true);
      const data = {
-        labels: ['Admins', 'All Assets', 'Free Softwares', 'Free Hardware', 'HW', 'SW' , 'Users'],
+        labels: ['Admins', 'Free Softwares', 'Free Hardware', 'HW', 'SW' , 'Users'],
         datasets: [
           {
             label: '# of Votes',
-            data: [da.admins, da.allAssets, da.freeSoftwares, da.freeHardware, da.hw, da.sw, da.users],
+            data: [da.admins, da.freeSoftwares, da.freeHardware, da.hw, da.sw, da.users],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
+              
               'rgba(255, 206, 86, 0.2)',
               'rgba(75, 192, 192, 0.2)',
               'rgba(153, 102, 255, 0.2)',
@@ -29,7 +29,7 @@ export const DashboardChart = (props) => {
             ],
             borderColor: [
               'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
+              
               'rgba(255, 206, 86, 1)',
               'rgba(75, 192, 192, 1)',
               'rgba(153, 102, 255, 1)',
