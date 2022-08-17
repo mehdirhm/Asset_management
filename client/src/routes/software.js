@@ -270,10 +270,11 @@ export default function Software() {
         manufacturer: item.manufacturer,
         currentUser: item.currentUser.fullName,
         description: item.description,
+        assetType: item.type,
+
         isLicense: item.isLicense,
         lastUpdate: item.lastUpdate,
         position: item.currentUser.position,
-        type: item.type,
       });
     });
   }
