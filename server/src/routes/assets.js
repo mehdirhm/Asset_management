@@ -12,7 +12,6 @@ router.get("/", auth, async (_req, res) => {
 );
 
 router.post("/", auth, async (req, res) => {
-    console.log(req.body.data);
     if (req.body.data.type == "hw") {
       const { error } = HwValidate(req.body.data);
       if (error) return res.status(400).send(error.details[0].message);
@@ -32,7 +31,7 @@ router.post("/", auth, async (req, res) => {
         ip: req.body.data.ip,
       });
       hardware = await hardware.save();
-      res.send(hardware);
+      res.send("hardware saved successfully");
     }
     if (req.body.data.type == "sw") {
       const { error } = SwValidate(req.body.data);
@@ -53,7 +52,7 @@ router.post("/", auth, async (req, res) => {
         },
       });
       software = await software.save();
-      res.send(software);
+      res.send("software saved successfully");
     }
   }
 );
@@ -81,7 +80,7 @@ router.put("/", auth, async (req, res) => {
         { new: true }
       );
       if (!sw) return res.status(404).send("The software with the given ID was not found.");
-      return res.send(sw);
+      return res.send("software updated successfully");
     }
     if (req.body.data.type == "hw") {
       const { error } = HwValidate(req.body.data);
@@ -105,7 +104,7 @@ router.put("/", auth, async (req, res) => {
         { new: true }
       );
       if (!hw) return res.status(404).send("The software with the given ID was not found.");
-      return res.send(hw);
+      return res.send("hardware updated successfully");
     }
     res.send("please send the asset type!!!");
   }
@@ -122,7 +121,7 @@ router.delete("/", auth, async (req, res) => {
         if (!sw) return res.status(404).send('The software with the given ID was not found.');
       }  
     }
-  res.send("success")
+  res.send("deleted successfully")
 }
 );
 export default router;
