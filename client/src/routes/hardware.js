@@ -135,15 +135,10 @@ export default function Hardware() {
         console.log(newRow)
           axios.put("http://localhost:3030/assets", {
             data: { ...newRow, type: "hw"  },
-            
-              headers:{
-
-                'x-auth-token' : localStorage.getItem('token')
-    
-            }
-
-            
-          })
+          
+          }, { headers : {
+            'x-auth-token' : localStorage.getItem('token')
+          } })
 
 
       //   axios({
@@ -192,16 +187,9 @@ export default function Hardware() {
         type: "hw",
         id : selectionModel,
       },
-      
-        headers:{
-
-          'x-auth-token' : localStorage.getItem('token')
-
-      }
-
-      
-      
-    });
+    }, { headers : {
+      'x-auth-token' : localStorage.getItem('token')
+    } });
     // console.log(rows);
     
   };

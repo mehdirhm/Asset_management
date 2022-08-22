@@ -199,6 +199,7 @@ export default function AddAssets() {
      let data =  newAsset();
       Object.keys(data).forEach((k) => data[k] === "" && delete data[k]);
       axios.post('http://localhost:3030/assets', {
+<<<<<<< HEAD
       data: data,
       headers:{
 
@@ -206,8 +207,16 @@ export default function AddAssets() {
 
     }
 
+||||||| e813439
+      data: data
+=======
+      data: data,
+    
+>>>>>>> f5dd574922874b6ec90f945e21dd95333c2bab80
       
-    }).then((res) => {
+    },  { headers : {
+      'x-auth-token' : localStorage.getItem('token')
+    } }).then((res) => {
 
       if(res.status !== 200){
         // console.log(res.data)
