@@ -149,8 +149,8 @@ export default function Software() {
           },{ headers : {
             'x-auth-token' : localStorage.getItem('token')
           } }).then((res) => {
-            // console.log(res)
-          }).catch((err) => alert(err.response));
+            alert(res.data)
+          }).catch((err) => alert("NOOO!"));
         
       }),
     [],
