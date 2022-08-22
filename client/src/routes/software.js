@@ -148,7 +148,9 @@ export default function Software() {
 
           },{ headers : {
             'x-auth-token' : localStorage.getItem('token')
-          } }).then((res) => {}).catch((err) => console.log(err.response));
+          } }).then((res) => {
+            // console.log(res)
+          }).catch((err) => alert(err.response));
         
       }),
     [],
@@ -265,7 +267,7 @@ export default function Software() {
         serialNumber: item.serialNumber,
         location: item.location,
         manufacturer: item.manufacturer,
-        currentUser: item.currentUser.fullName,
+        fullName: item.currentUser.fullName,
         description: item.description,
         assetType: item.type,
 
