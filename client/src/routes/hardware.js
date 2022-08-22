@@ -140,7 +140,7 @@ export default function Hardware() {
             'x-auth-token' : localStorage.getItem('token')
           } }).then((res) => {
             alert(res.data);
-          }).catch((err) => alert("NOOOOO!"));
+          }).catch((err) => alert(err.response.data));
 
 
       //   axios({

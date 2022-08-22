@@ -210,7 +210,7 @@ export default function AddAssets() {
 
     
     }).then((res) => {
-
+      alert(res.data)
       if(res.status !== 200){
         // console.log(res.data)
         // localStorage.setItem('token',res.headers['x-auth-token'])

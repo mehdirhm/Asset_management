@@ -150,7 +150,7 @@ export default function Software() {
             'x-auth-token' : localStorage.getItem('token')
           } }).then((res) => {
             alert(res.data)
-          }).catch((err) => alert("NOOO!"));
+          }).catch((err) => alert(err.response.data));
         
       }),
     [],
