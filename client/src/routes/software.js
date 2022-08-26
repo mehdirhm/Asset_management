@@ -277,19 +277,7 @@ export default function Software() {
       });
     });
   }
-  // console.log(1234)
-  // hw.push({id: 1, name: "Ali", serialNumber: "1234" , location: "hamedan" , manufacturer:"microsoft" , ip : "12344"});
 
-  // [
-  //   { id: 1, col1: data.hw[0].name, col2: "World" },
-  //   { id: 2, col1: "Hello", col2: "World" },
-  //   { id: 3, col1: "Hello", col2: "World" },
-  //   { id: 4, col1: "Hello", col2: "World" },
-  // ]
-  // if (loading || !data) return "Loading...";
-  // if (error) return "Error!";
-  // console.log(result)
-  // if (loading) return "Loading...";
 
   return (
     <>

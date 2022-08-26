@@ -96,7 +96,7 @@ export const DashboardNavbar = (props) => {
             </IconButton>
           </Tooltip> */}
 
-          <Avatar
+          {/* <Avatar
             sx={{
               height: 40,
               width: 40,
@@ -105,7 +105,7 @@ export const DashboardNavbar = (props) => {
             src="/static/images/avatars/avatar_1.png"
           >
             <UserCircleIcon fontSize="small" />
-          </Avatar>
+          </Avatar> */}
 
           </Toolbar>
 
