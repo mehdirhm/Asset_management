@@ -4,20 +4,14 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import PropTypes from "prop-types";
 
-// import { useAxios } from "use-axios-client";
-// import * as React from 'react';
+
 import { useState, useEffect } from "react";
-// import { DataGrid } from '@mui/x-data-grid';
 import { DataGrid, GridCellModes } from "@mui/x-data-grid";
 
 import { useAxios } from "use-axios-client";
 import { v4 as uuid } from "uuid";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-
-
-
-
 
 
 
@@ -129,7 +123,6 @@ export default function Software() {
   const handleCellKeyDown = React.useCallback(
     (params, event) => {
       if (cellMode === "edit") {
-        // Prevents calling event.preventDefault() if Tab is pressed on a cell in edit mode
         event.defaultMuiPrevented = true;
       }
     },
@@ -159,19 +152,15 @@ export default function Software() {
   let hw = [];
   let sw = [];
   let rows_id = [];
-  // console.log(GridSelectionModel)
   const [rows, setRows] = useState([]);
   const [rows_sw, setRows_sw] = useState([]);
 
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  // const [checkboxSelection, setCheckboxSelection] = useState(true);
   const [selectionModel, setSelectionModel] = useState([]);
   const [selectionModelSw, setSelectionModelSw] = useState([]);
 
   const onDelete_1 = () => {
-    // console.log(selectionModel.includes('626d78f9110b8bcc06b21148'))
-    // console.log(selectionModel)
     setRows((rows) => rows.filter((r) => !selectionModel.includes(r._id)));
     console.log(rows);
     axios.delete("http://localhost:3030/assets", {
@@ -180,25 +169,28 @@ export default function Software() {
         id: selectionModel,
       },
     });
-    // setSelectionModel([]);
   };
 
   const onDelete_2 = () => {
-    // console.log(selectionModel.includes('626d78f9110b8bcc06b21148'))
-    // console.log(selectionModel)
+
     setRows_sw((rows_sw) =>
       rows_sw.filter((r) => !selectionModelSw.includes(r._id))
     );
+
+    
+
     axios.delete("http://localhost:3030/assets", {
+      headers: {
+        'x-auth-token' : localStorage.getItem('token')
+      },
       data: {
         type: "sw",
         id: selectionModelSw,
-      },
-    }, { headers : {
-      'x-auth-token' : localStorage.getItem('token')
-    } });
-    // console.log(rows)
-    // setSelectionModel([]);
+      }
+    }).then((res) => {
+      alert(res.data);
+    }).catch((err) => alert(err.response.data));
+
   };
 
 
@@ -252,14 +244,9 @@ export default function Software() {
     setRows(data.hw);
     // console.log(rows);
   }, [data.hw]);
-  // const { data, error, loading } = useAxios({
-  //   url: "http://localhost:3030/assets",
-  // });
+ 
 
   if (!loading) {
-    //   //   // console.log(2)
-
-    //     // console.log(hw)
     rows_sw.map((item) => {
       sw.push({
         id: item._id,
@@ -316,15 +303,8 @@ export default function Software() {
             }}
             experimentalFeatures={{ newEditingApi: true }}
             checkboxSelection
-            // checkboxSelection
-            // selectionModel={selectionModel}
-            // onSelectionModelChange={(newSelectionModel) => {
-            //   setSelectionModel(newSelectionModel)
-            // }}
             onSelectionModelChange={(newSelectionModel) => {
               setSelectionModelSw(newSelectionModel);
-              // console.log(newSelectionModel  )
-              // {console.log(selectionModel)}
             }}
             // selectionModelSw={selectionModel}
             loading={loading}
@@ -356,10 +336,5 @@ export default function Software() {
 
       {/* <DataGrid rows={ [{ id: 1, col1: 'Hello', col2: 'World' }]} columns={ [{ field: 'col1', headerName: 'Column 1', width: 150 }]} /> */}
     </>
-    // <p></p>
   );
 }
-
-//   <main style={{ padding: "1rem 0" }}>
-//         <h2>Assets</h2>
-//       </main>

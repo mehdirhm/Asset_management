@@ -15,6 +15,8 @@ router.post("/", auth, async (req, res) => {
     if (req.body.data.type == "hw") {
       const { error } = HwValidate(req.body.data);
       if (error) return res.status(400).send(error.details[0].message);
+      let hw1 = await Hardware.findOne({ serialNumber: req.body.data.serialNumber });
+      if (hw1) return res.status(400).send('Serial Number already existed.');
       let hardware = new Hardware({
         name: req.body.data.name,
         serialNumber: req.body.data.serialNumber,
@@ -36,6 +38,8 @@ router.post("/", auth, async (req, res) => {
     if (req.body.data.type == "sw") {
       const { error } = SwValidate(req.body.data);
       if (error) return res.status(400).send(error.details[0].message);
+      let sw1 = await Software.findOne({ serialNumber: req.body.data.serialNumber });
+      if (sw1) return res.status(400).send('Serial Number already existed.');
       let software = new Software({
         name: req.body.data.name,
         serialNumber: req.body.data.serialNumber,

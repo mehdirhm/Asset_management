@@ -4,10 +4,8 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 
 
-// import { useAxios } from "use-axios-client";
-// import * as React from 'react';
+
 import { useState, useEffect } from "react";
-// import { DataGrid } from '@mui/x-data-grid';
 import { DataGrid ,GridCellModes } from "@mui/x-data-grid";
 import PropTypes from "prop-types";
 
@@ -122,7 +120,6 @@ export default function Hardware() {
   const handleCellKeyDown = React.useCallback(
     (params, event) => {
       if (cellMode === "edit") {
-        // Prevents calling event.preventDefault() if Tab is pressed on a cell in edit mode
         event.defaultMuiPrevented = true;
       }
     },
@@ -142,19 +139,6 @@ export default function Hardware() {
             alert(res.data);
           }).catch((err) => alert(err.response.data));
 
-
-      //   axios({
-      //     method:"put",
-      //     url:"http://localhost:3030/assets",
-      //     data:{ ...newRow, type: "hw"  },
-      //     headers : {
-      //       'x-auth-token' : localStorage.getItem('token')
-      //     }
-          
-          
-          
-    
-      // })
       }),
     []
   )
@@ -162,48 +146,35 @@ export default function Hardware() {
   let hw = [];
   let sw = [];
   let rows_id = [];
-  // console.log(GridSelectionModel)
   const [rows, setRows] = useState([]);
   const [rows_sw, setRows_sw] = useState([]);
 
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  // const [checkboxSelection, setCheckboxSelection] = useState(true);
   const [selectionModel, setSelectionModel] = useState([]);
   const [selectionModelSw, setSelectionModelSw] = useState([]);
 
-  // const onDelete_1 = () => {
-  //   // console.log(selectionModel.includes('626d78f9110b8bcc06b21148'))
-  //   // console.log(selectionModel)
-  //   setRows((rows) => rows.filter((r) => !selectionModel.includes(r._id)));
-  //   console.log(rows);
-  //   // setSelectionModel([]);
-  // };
-
   const onDelete_1 = () => {
-    // console.log(selectionModel.includes('626d78f9110b8bcc06b21148'))
-    // console.log(selectionModel)
+
     setRows((rows) => rows.filter((r) => !selectionModel.includes(r._id)));
-    axios.delete('http://localhost:3030/assets', {
+
+    axios.delete("http://localhost:3030/assets", {
+      headers: {
+        'x-auth-token' : localStorage.getItem('token')
+      },
       data: {
         type: "hw",
-        id : selectionModel,
-      },
-    }, { headers : {
-      'x-auth-token' : localStorage.getItem('token')
-    } });
-    // console.log(rows);
-    
+        id : selectionModel
+      }
+    }).then((res) => {
+      alert(res.data);
+    }).catch((err) => alert(err.response.data));    
   };
 
   const onDelete_2 = () => {
-    // console.log(selectionModel.includes('626d78f9110b8bcc06b21148'))
-    // console.log(selectionModel)
     setRows_sw((rows_sw) =>
       rows_sw.filter((r) => !selectionModelSw.includes(r._id))
     );
-    // console.log(rows)
-    // setSelectionModel([]);
   };
 
   useEffect(() => {
@@ -271,28 +242,12 @@ export default function Hardware() {
         assetType: item.type,
         fullName: item.currentUser.fullName,
         position: item.currentUser.position,
-        // currentUser: item.currentUser.fullName,
         installationDate: item.installationDate,
-        // type: item.type,
         description: item.description,
         propertyNumber: item.propertyNumber,
       });
     });
-    //     // console.log(hw)
   }
-  // console.log(1234)
-  // hw.push({id: 1, name: "Ali", serialNumber: "1234" , location: "hamedan" , manufacturer:"microsoft" , ip : "12344"});
-
-  // [
-  //   { id: 1, col1: data.hw[0].name, col2: "World" },
-  //   { id: 2, col1: "Hello", col2: "World" },
-  //   { id: 3, col1: "Hello", col2: "World" },
-  //   { id: 4, col1: "Hello", col2: "World" },
-  // ]
-  // if (loading || !data) return "Loading...";
-  // if (error) return "Error!";
-  // console.log(result)
-  // if (loading) return "Loading...";
 
   return (
     <>
@@ -334,14 +289,9 @@ processRowUpdate={processRowUpdate}
 
 
 
-            // pagination
             checkboxSelection
             onSelectionModelChange={(newSelectionModel) => {
-              // const selectedIDs = new Set(newSelectionModel);
-              // const selectedRows = data.hw.filter(
-              //   (h) => selectedIDs.has(h._id)
-              //   // console.log(selectedIDs)
-              // );
+             
               setSelectionModel(newSelectionModel);
               // console.log(selectedRows);
               // {console.log(selectionModel)}
@@ -383,7 +333,3 @@ processRowUpdate={processRowUpdate}
     // <p></p>
   );
 }
-
-//   <main style={{ padding: "1rem 0" }}>
-//         <h2>Assets</h2>
-//       </main>
